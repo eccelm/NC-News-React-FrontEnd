@@ -1,5 +1,6 @@
 import React, { Component } from 'react' 
 import{ getArticles} from '../api'
+import ArticlesFilter from './ArticlesFilter'
 import ArticlesList from './ArticlesList'
 
 class Articles extends Component {
@@ -19,7 +20,7 @@ render() {
 return (
   <div>
   <h2>Routing testing for articles page</h2>
-
+  <ArticlesFilter />
   <ArticlesList articles={this.state.articles} />
   </div>)}
 }
