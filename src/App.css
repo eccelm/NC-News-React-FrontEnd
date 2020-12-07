@@ -7,3 +7,10 @@
   color: maroon;
   background-color: aliceblue;
 }
+
+li {
+  padding: 10px;
+  margin: 5px;
+  background-color: aliceblue;
+  list-style: none;
+}
