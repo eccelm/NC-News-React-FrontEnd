@@ -4,6 +4,7 @@ function ArticlesFilter(props) {
   return (
   <label>
     Filter articles by:
+    <span><button>ASC</button><button>DESC</button></span>
     <select>
     <optgroup label="Filter Options">
       <option value="">1</option>

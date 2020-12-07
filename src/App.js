@@ -10,7 +10,7 @@ function App() {
       <Header />
       <Router>
         <Homepage path="/" />
-        <Articles path="/articles" />
+        <Articles path="/articles/*" />
       </Router>
     </div>
   );

@@ -14,7 +14,7 @@ return (
        
       <li key={article.article_id}>
          <Collapsible trigger={article.title}>
-       <button>I should be a Link to the article</button>
+           <Link to={`${article.article_id}`}>Click here to read the full article</Link>
       <p> Article by: {article.author}</p>
       <p>Votes:{article.votes} Number of Comments: {article.comment_count}</p>
        </Collapsible>
