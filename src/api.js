@@ -6,12 +6,12 @@ const ncNewsApi = axios.create({
 
 // mcNewsApi.get() .. is neater :)
 
-export const getArticles = (query) => {
-  console.log(query);
+export const getArticles = (queryKey, queryValue) => {
+  console.log(queryKey, queryValue);
   return ncNewsApi
-    .get("/articles", { params: { order: query } })
+    .get("/articles", { params: { [queryKey]: queryValue } })
     .then((response) => {
-      console.log(response);
+      console.log(response, "<<<<<returning from getArticles request");
       return response.data.articles;
     });
 };

@@ -3,20 +3,27 @@ import React from 'react'
 function ArticlesFilter(props) {
  
   function handleClick(event) {
-    console.log(event)
-    props.handleQuery(event.target.value)
+  
+    let key = event.target.id;
+    let value = event.target.value;
+    console.log(key,"key<<< >>>value", value)
+    props.handleQuery(key, value)
   }
 
   return (
+    <>
   <label>
     Sort by:
-    <button onClick={handleClick} value="asc">Ascending Order</button>
+    <button name="order" id="order" onClick={handleClick} value="asc">Ascending Order</button>
     <button onClick={handleClick} value="desc">Descending button</button>
-Filter By:
-      <button>Coding</button>
-      <button>Football </button>
-      <button>Cooking</button>
-    <select>
+        </label>
+    <button onClick={handleClick} value="coding">Coding</button>
+    <select
+    className="filterSelect"
+    name="topic"
+    id="topic"
+    onClick={handleClick}
+    >
     <optgroup label="Topics">
       <option value="">All Topics</option>
       <option value="coding">Coding</option>
@@ -24,7 +31,8 @@ Filter By:
       <option value="football">Football</option>
     </optgroup>
     </select>
-  </label>
+
+  </>
   )
 }
 

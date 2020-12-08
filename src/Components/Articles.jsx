@@ -15,8 +15,9 @@ componentDidMount(){
   })
 }
 
-handleQuery = (queryValue) => {
- getArticles(queryValue).then((articles) => {
+handleQuery = (queryKey, queryValue) => {
+  console.log(queryKey, queryValue)
+ getArticles(queryKey, queryValue).then((articles) => {
    this.setState({articles})
  })
 }
