@@ -1,13 +1,14 @@
 import React from 'react';
 import {Link} from '@reach/router'
+import homeButton from '../Images/homebutton.png'
 
 function Header() {
   return (
     <div className="Header">
-    <h1>NC NEWS</h1>
+   <Link to="/"> <img src={homeButton} alt="home button" height="50" width="50"/>  </Link>
+    
     <span></span>
-  
-    <Link to="/">  <button>This will link to the homepage</button></Link>
+
  </div>
   )
 }

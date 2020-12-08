@@ -5,8 +5,7 @@ function Comments(props) {
 return (
 
   <div className="comments-box">
-  <p>Comments Here</p>
-  <p>{JSON.stringify(props.comments[0])}</p>
+  <p>Comments</p>
   <CommentCard comments={props.comments} />
   </div>
 )

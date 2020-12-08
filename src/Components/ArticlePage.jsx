@@ -21,9 +21,25 @@ class Article extends Component {
         <button>Go Back</button>
         <button>Next Article</button>
         <h1>Welcome to the Article page</h1>
-        <p>There shouldn't be anything else on the page</p>
-        <p>{JSON.stringify(article)}</p>
-      <Comments comments={comments}/>
+ <p>{JSON.stringify(Object.keys(article))}</p>
+    <div class="article-grid-container">
+  <div class="main-article">
+  
+      
+    <h2>{article.title}</h2>
+    <p>{article.body}</p>
+  </div>
+
+  <div class="article-comments">
+      <p>Hello from inside this diiiiiiiiiiiv</p>
+ <Comments comments={comments}/>
+  </div>
+  <div class="add-comment">I will let you add your own comment once Martha gets around to coding me</div>  
+
+</div>
+
+    
+     
       </div>
      
     );

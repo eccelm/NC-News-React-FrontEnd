@@ -1,3 +1,5 @@
+// this is working without importing React in??
+
 
 function CommentCard(props){
 return (
@@ -6,11 +8,10 @@ return (
       return (
        
       <li key={comment.comment_id}>
-         
-     <p>{comment.comment_id} </p> 
-      <p> User: {comment.author}</p>
-      <p>Votes:{comment.votes} </p>
-      <h3>{comment.body}</h3>
+          
+      <p> User: {comment.author} Votes:{comment.votes}</p>
+
+      <p>{comment.body}</p>
      
       </li>
       
