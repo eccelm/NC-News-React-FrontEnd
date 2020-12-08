@@ -1,9 +1,8 @@
 import React, { Component } from 'react' 
-import {Router} from '@reach/router'
+//import {Router} from '@reach/router'
 import{ getArticles} from '../api'
 import ArticlesFilter from './ArticlesFilter'
 import ArticlesList from './ArticlesList'
-import Article from './ArticlePage'
 
 class Articles extends Component {
 state = {articles: []}
@@ -16,16 +15,20 @@ componentDidMount(){
   })
 }
 
+handleQuery = (queryValue) => {
+ getArticles(queryValue).then((articles) => {
+   this.setState({articles})
+ })
+}
+
 render() {
 return (
   <div>
   <h2>Routing testing for articles page</h2>
-  <ArticlesFilter />
+  <ArticlesFilter handleQuery={this.handleQuery}/>
     <ArticlesList articles={this.state.articles} />
-    <Router>
-    <Article path =":article_id" />
-  </Router>
+
   </div>)}
 }
-
+// NOTE: Removed * from app level path as meant everything onto articles
 export default Articles;
