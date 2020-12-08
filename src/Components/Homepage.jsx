@@ -10,9 +10,6 @@ function Homepage() {
 
       <Link to="/articles"><button>Take me to all articles</button></Link>
 
-      <button>Coding</button>
-      <button>Football </button>
-      <button>Cooking</button>
  </div>
   )
 }

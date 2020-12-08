@@ -23,7 +23,7 @@ class Article extends Component {
         <h1>Welcome to the Article page</h1>
         <p>There shouldn't be anything else on the page</p>
         <p>{JSON.stringify(article)}</p>
-      <Comments />
+      <Comments comments={comments}/>
       </div>
      
     );

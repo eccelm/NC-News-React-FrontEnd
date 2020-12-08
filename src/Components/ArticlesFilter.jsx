@@ -17,7 +17,7 @@ function ArticlesFilter(props) {
     <button name="order" id="order" onClick={handleClick} value="asc">Ascending Order</button>
     <button onClick={handleClick} value="desc">Descending button</button>
         </label>
-    <button onClick={handleClick} value="coding">Coding</button>
+  
     <select
     className="filterSelect"
     name="topic"

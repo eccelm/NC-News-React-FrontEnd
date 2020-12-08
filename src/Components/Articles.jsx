@@ -16,7 +16,7 @@ componentDidMount(){
 }
 
 handleQuery = (queryKey, queryValue) => {
-  console.log(queryKey, queryValue)
+  //console.log(queryKey, queryValue)
  getArticles(queryKey, queryValue).then((articles) => {
    this.setState({articles})
  })
@@ -25,7 +25,7 @@ handleQuery = (queryKey, queryValue) => {
 render() {
 return (
   <div>
-  <h2>Routing testing for articles page</h2>
+  <h2>Use the filters below to choose a topic and click on a title to expand the article</h2>
   <ArticlesFilter handleQuery={this.handleQuery}/>
     <ArticlesList articles={this.state.articles} />
 
