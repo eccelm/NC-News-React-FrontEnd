@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getArticleById, getArticleComments } from "../api";
+import {Link} from '@reach/router'
 import Comments from './CommentsDisplay'
 
 class Article extends Component {
@@ -13,13 +14,14 @@ class Article extends Component {
       this.setState({comments})
     });
   }
-
+// need component did update to get the url to do something different
   render() {
     const {article, comments} = this.state;
     return (
       <div>
-        <button>Go Back</button>
-        <button>Next Article</button>
+        <Link to="/articles"><button>Go Back</button></Link>
+     <Link to={`/articles/${article["article_id"]+1}`}><button>Next Article - not changing page</button></Link>
+       
         <h1>Welcome to the Article page</h1>
  <p>{JSON.stringify(Object.keys(article))}</p>
     <div class="article-grid-container">

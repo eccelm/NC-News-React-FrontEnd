@@ -1,14 +1,14 @@
 .App {
   text-align: center;
   background-color: #cae9ff;
-  height: 100vh;
+  height: min-content(100vh) max-content(auto);
 }
 
 button {
   margin: 5px;
   height: 40px;
   width: auto;
-  background-color: #d581a1;
+  background-color: #ebf7ff;
   color: black;
   font-size: 20px;
   text-align: center;
@@ -36,7 +36,11 @@ li {
 }
 .Header {
   background-color: #1b4965;
+  height: 10%;
+  display: flex;
+  align-items: flex-end;
 }
+
 .Homepage {
   font-size: 50px;
 }
@@ -45,14 +49,14 @@ li {
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 2fr 1fr;
   grid-gap: 10px;
-  background-color: #d581a1;
+  background-color: #a44b73;
   padding: 20px;
   height: 90vh;
   width: 96vw;
 }
 
 .article-grid-container > div {
-  background-color: #f2e3ea;
+  background-color: #ebf7ff;
   text-align: center;
   padding: 20px 0;
 }
