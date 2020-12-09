@@ -47,3 +47,11 @@ export const getUserByUsername = (username) => {
     return response.data.username;
   });
 };
+
+export const postCommentToArticle = (articleId, commentContent) => {
+  return ncNewsApi
+    .post(`/articles/${articleId}/comments`, commentContent)
+    .then((response) => {
+      console.log(response);
+    });
+};

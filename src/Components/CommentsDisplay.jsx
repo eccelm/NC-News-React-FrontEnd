@@ -5,7 +5,7 @@ function Comments(props) {
 return (
 
   <div className="comments-box">
-  <p>Comments</p>
+  <h2>Comments</h2>
   <CommentCard comments={props.comments} />
   </div>
 )
