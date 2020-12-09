@@ -1,7 +1,6 @@
 const { default: CommentCard } = require("./CommentsCard")
 
 function Comments(props) {
-  console.log(props)
 return (
 
   <div className="comments-box">

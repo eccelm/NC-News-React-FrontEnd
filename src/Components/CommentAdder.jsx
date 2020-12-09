@@ -1,24 +1,45 @@
-import React from 'react';
+import React from "react";
+// class comp??  with state to catch the data?
+// keep it out of the url good practice? not sensitive
+function CommentAdder(props) {
+  console.log(props);
 
-function AddComment(props){
-return <p>Hello</p>
+  function handleSubmit(event) {
+    console.log("I'm through", event);
+    console.log(event.target.value);
+    console.log(event.target[0].value);
+    console.log(event.target[1].value);
+    event.preventDefault();
+  }
+  /*
+handleSubmit(event) func here?
+- needs to collect data into the {k:v} pairs to send 
+run handleNewComment()
+*/
+  return (
+    <div>
+      <p>Hello</p>
+
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="comment-user">
+          Your username:
+          <input id="comment-user " type="text" required />
+        </label>
+        <br />
+        <label htmlFor="comment-body">
+          Add your comment here:
+          <textarea
+            id="comment-body"
+            cols="25"
+            rows="5"
+            maxLength="250"
+            required
+          ></textarea>
+          <button type="submit">Submit Comment</button>
+        </label>
+      </form>
+    </div>
+  );
 }
 
-export default AddComment;
-
-/*
-<form onSubmit={this.handleSumbit}>
-     <div className="user-comment-div">
-     <label htmlFor="comment-user">User:</label>
-     <input name="comment-user" id="comment-user" type="text" required/>
-     </div>
-
-     <div className="body-comment-div">
-     <label htmlFor="comment-body">Write your comment here:</label>
-    <textarea name="comment-body" id="comment-body" cols="30" rows="10" maxlength="1000" required></textarea>
-    </div>
-    
-     <button type="submit">add comment</button>
-   </form>
-
-   */
+export default CommentAdder;

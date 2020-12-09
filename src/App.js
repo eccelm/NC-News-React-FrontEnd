@@ -12,6 +12,7 @@ function App() {
       <Router>
         <Homepage path="/" />
         <Articles path="/articles/" />
+
         <Article path="/articles/:article_id" />
       </Router>
     </div>
