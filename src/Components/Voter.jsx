@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { upVote } from "../api";
 /*
 API needs articleUpvote func
 export const upVote = (id) => {
@@ -16,12 +17,14 @@ class Voter extends Component {
   };
 
   handleClick = (event) => {
-    const { comment_id } = this.props;
-    articleUpvote(comment_id); // sending axios
-    this.setState({
-      hasVoted: true,
-      vote_change: 1,
-    });
+    console.log(this.props);
+    const { article_id } = this.props.article;
+    console.log(article_id);
+    // upVote(comment_id); // sending axios
+    // this.setState({
+    //   hasVoted: true,
+    //   vote_change: 1,
+    // });
   };
 
   render() {

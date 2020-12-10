@@ -1,6 +1,7 @@
 import React from "react";
 import Collapsible from "react-collapsible";
 import { Link } from "@reach/router";
+import Voter from "./Voter";
 
 function ArticlesList(props) {
   return (
@@ -16,6 +17,7 @@ function ArticlesList(props) {
                 <p className="collapsed-2"> Article by: {article.author}</p>
                 <div className="collapsed-3">
                   <p>Votes: {article.votes}</p>
+                  <Voter article={article} />
                   <p>Number of Comments: {article.comment_count}</p>
                 </div>
               </div>

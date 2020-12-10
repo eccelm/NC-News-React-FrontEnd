@@ -64,8 +64,14 @@ export const deleteArticleComment = (article_id, comment_id) => {
 
 export const upVote = (article_id, comment_id) => {
   if (comment_id) {
-    return ncNewsApi.patch(); // comment votes
+    return ncNewsApi
+      .patch(`articles/comments/${comment_id}`, { inc_votes: 1 })
+      .then((response) => {
+        console.log(response, "Hello from the patched comment  vote");
+      }); // comment votes
   } else {
-    return ncNewsApi.patch(); //article votes
+    return ncNewsApi.patch(`/articles/${article_id}`).then((response) => {
+      console.log(response, "Hello from the patched article vote");
+    }); //article votes
   }
 };
