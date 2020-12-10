@@ -4,8 +4,6 @@ Next Step: Refactor into a controlled component
 Why --> current accessing of values would be disrupted by a new element altering the array and making the inputted indexes incorrect (see example in Pauls thurs lecture)
 */
 function CommentAdder(props) {
-  console.log(props);
-
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -16,11 +14,7 @@ function CommentAdder(props) {
     };
     props.handleNewComment(comment);
   }
-  /*
-handleSubmit(event) func here?
-- needs to collect data into the {k:v} pairs to send 
-run handleNewComment()
-*/
+
   return (
     <div>
       <p>Hello</p>

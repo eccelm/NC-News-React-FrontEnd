@@ -3,7 +3,9 @@
   background-color: #cae9ff;
   height: min-content(100vh) max-content(auto);
 }
-
+/*
+  Not refactored yet, so if you like CSS, I recommend you don't read on unless you like horror stories
+*/
 button {
   background-color: #ebf7ff;
   color: black;
@@ -74,4 +76,14 @@ li {
   grid-column: 2 / 3;
   grid-row: 2 / span 1;
   overflow: auto;
+}
+
+.delete-comment-button {
+  color: #1b4965;
+  background-color: cadetblue;
+  height: 15px;
+  font-size: 15px;
+  align-content: center;
+  padding: 0%;
+  margin: 0px;
 }
