@@ -15,6 +15,19 @@ function ArticlesFilter(props) {
   return (
     <>
       <p>Order:</p>
+      <div className="radio-order-container">
+        <input
+          type="radio"
+          name="order"
+          id="desc"
+          value="desc"
+          defaultChecked
+        />
+        <label htmlFor="desc">Desc</label>
+        <input type="radio" name="order" id="asc" value="asc" />
+        <label htmlFor="asc">Asc</label>
+      </div>
+
       <button name="order" id="order" onClick={handleClick} value="asc">
         Ascending
       </button>

@@ -16,7 +16,6 @@ function ArticlesList(props) {
                 </Link>
                 <p className="collapsed-2"> Article by: {article.author}</p>
                 <div className="collapsed-3">
-                  <p>Votes: {article.votes}</p>
                   <Voter article={article} />
                   <p>Number of Comments: {article.comment_count}</p>
                 </div>

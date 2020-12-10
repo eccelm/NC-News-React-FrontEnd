@@ -1,4 +1,5 @@
 import React from "react";
+import Voter from "./Voter";
 // before continuing will also need a refactor to class comp in order to access the comment_id ??
 function Comments(props) {
   function handleClick(event) {
@@ -21,11 +22,8 @@ function Comments(props) {
                   X
                 </button>
               ) : null}
-              <p>
-                {" "}
-                User: {comment.author} Votes:{comment.votes}
-              </p>
-
+              <p> User: {comment.author}</p>
+              <Voter comment={comment} />
               <p>{comment.body}</p>
             </li>
           );

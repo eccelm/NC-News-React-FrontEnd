@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { upVote } from "../api";
 /*
-API needs articleUpvote func
-export const upVote = (id) => {
-  return ncGamersApi.patch(`path`, content to patch)
-}
-
+NOT working properly
+- can send vote again in comments
+- vote state ISNT saving for the article vote path
 */
 
 class Voter extends Component {
@@ -18,17 +16,44 @@ class Voter extends Component {
 
   handleClick = (event) => {
     console.log(this.props);
-    const { article_id } = this.props.article;
-    console.log(article_id);
-    // upVote(comment_id); // sending axios
-    // this.setState({
-    //   hasVoted: true,
-    //   vote_change: 1,
-    // });
+    if (this.props.comment) {
+      console.log("I'm not breaking anymore");
+      const { article_id } = this.props.comment;
+      const { comment_id } = this.props.comment;
+      console.log(article_id, comment_id);
+      upVote(article_id, comment_id).catch((err) => {
+        const {
+          response: { status, statusText },
+        } = err;
+
+        this.setState({
+          hasVoted: false,
+          vote_change: 0,
+          hasError: true,
+          errorMessage: `Whoops... ${status}! ${statusText}`,
+        });
+      });
+      this.setState({ vote_change: 1, hasVoted: true });
+    } else {
+      const { article_id } = this.props.article;
+      console.log(article_id);
+      upVote(article_id).catch((err) => {
+        const {
+          response: { status, statusText },
+        } = err;
+
+        this.setState({
+          hasVoted: false,
+          vote_change: 0,
+          hasError: true,
+          errorMessage: `Whoops... ${status}! ${statusText}`,
+        });
+      });
+      this.setState({ vote_change: 1, hasVoted: true });
+    }
   };
 
   render() {
-    const { votes } = this.props;
     const { vote_change, hasVoted, hasError, errorMessage } = this.state;
 
     if (hasError) {
@@ -36,7 +61,12 @@ class Voter extends Component {
     } else {
       return (
         <div>
-          <p>Votes: {votes + vote_change}</p>
+          <p>
+            Votes:{" "}
+            {this.props.comment
+              ? this.props.comment.votes
+              : this.props.article.votes + vote_change}
+          </p>
           <button onClick={this.handleClick} disabled={hasVoted}>
             upvote!
           </button>
