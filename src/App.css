@@ -81,7 +81,8 @@ li {
 .delete-comment-button {
   color: #1b4965;
   background-color: cadetblue;
-  height: 15px;
+  height: 20px;
+  width: 25px;
   font-size: 15px;
   align-content: center;
   padding: 0%;

@@ -3,6 +3,7 @@ import {
   getArticleById,
   getArticleComments,
   postCommentToArticle,
+  deleteArticleComment,
 } from "../api";
 import { Link } from "@reach/router";
 import Comments from "./Comments";
@@ -44,6 +45,13 @@ class ArticlePage extends Component {
     );
   };
 
+  removeComment = (comment_id) => {
+    console.log("hallo wie geht's");
+    console.log(this);
+    const { article_id } = this.state.article;
+    deleteArticleComment(article_id, comment_id).then();
+  };
+
   render() {
     const { article, comments } = this.state;
 
@@ -66,7 +74,7 @@ class ArticlePage extends Component {
           </div>
 
           <div className="article-comments">
-            <Comments comments={comments} />
+            <Comments comments={comments} removeComment={this.removeComment} />
           </div>
 
           <div className="add-comment">

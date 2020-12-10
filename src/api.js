@@ -51,3 +51,11 @@ export const postCommentToArticle = (articleId, commentContent) => {
       return response.data.comment;
     });
 };
+
+export const deleteArticleComment = (article_id, comment_id) => {
+  return ncNewsApi
+    .delete(`/articles/${article_id}/comments/${comment_id}`)
+    .then((response) => {
+      console.log(response, "Hello from axios delete");
+    });
+};

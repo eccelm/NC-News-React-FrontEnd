@@ -1,6 +1,11 @@
+import React from "react";
+// before continuing will also need a refactor to class comp in order to access the comment_id ??
 function Comments(props) {
+  console.log(props);
   function handleClick(event) {
     console.log("clickedy click");
+    console.log(event);
+    // props.removeComment();
   }
 
   return (
