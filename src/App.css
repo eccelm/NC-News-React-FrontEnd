@@ -6,6 +6,21 @@
 /*
   Not refactored yet, so if you like CSS, I recommend you don't read on unless you like horror stories
 */
+
+.radio-toolbar input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+.radio-toolbar label {
+  display: inline-block;
+  background-color: #ddd;
+  padding: 10px 20px;
+  font-family: sans-serif, Arial;
+  font-size: 16px;
+  border: 2px solid #444;
+  border-radius: 4px;
+}
 button {
   background-color: #ebf7ff;
   color: black;
@@ -42,6 +57,28 @@ li {
 
 .Homepage {
   font-size: 50px;
+}
+
+.collapsed-article-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  width: 100%;
+}
+
+.collapsed-1 {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  width: 100%;
+}
+.collapsed-2 {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+.collapsed-3 {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+  background-color: wheat;
 }
 .article-grid-container {
   display: grid;

@@ -5,7 +5,9 @@ const ncNewsApi = axios.create({
 });
 
 // mcNewsApi.get() .. is neater :)
-
+/*
+REMEMBER TO ALTER THEN BLOCK OF DELETE WHEN GOING BACK TO IT
+*/
 export const getArticles = (queryKey, queryValue) => {
   return ncNewsApi
     .get("/articles", { params: { [queryKey]: queryValue } })
@@ -58,4 +60,12 @@ export const deleteArticleComment = (article_id, comment_id) => {
     .then((response) => {
       console.log(response, "Hello from axios delete");
     });
+};
+
+export const upVote = (article_id, comment_id) => {
+  if (comment_id) {
+    return ncNewsApi.patch(); // comment votes
+  } else {
+    return ncNewsApi.patch(); //article votes
+  }
 };

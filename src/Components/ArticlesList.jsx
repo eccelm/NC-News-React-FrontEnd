@@ -9,14 +9,16 @@ function ArticlesList(props) {
         return (
           <li key={article.article_id}>
             <Collapsible trigger={article.title}>
-              <Link to={`${article.article_id}`}>
-                Click here to read the full article
-              </Link>
-              <p> Article by: {article.author}</p>
-              <p>
-                Votes:{article.votes} Number of Comments:{" "}
-                {article.comment_count}
-              </p>
+              <div className="collapsed-article-container">
+                <Link className="collapsed-1" to={`${article.article_id}`}>
+                  Click here to read the full article
+                </Link>
+                <p className="collapsed-2"> Article by: {article.author}</p>
+                <div className="collapsed-3">
+                  <p>Votes: {article.votes}</p>
+                  <p>Number of Comments: {article.comment_count}</p>
+                </div>
+              </div>
             </Collapsible>
           </li>
         );

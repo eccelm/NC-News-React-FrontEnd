@@ -6,6 +6,7 @@ import {
   deleteArticleComment,
 } from "../api";
 import { Link } from "@reach/router";
+import Loader from "./Loading";
 import Comments from "./Comments";
 import CommentAdder from "./CommentAdder";
 
@@ -14,11 +15,11 @@ import CommentAdder from "./CommentAdder";
    need component did update to get the url to do something different for the next page button
   */
 class ArticlePage extends Component {
-  state = { article: [], comments: [] };
+  state = { article: [], comments: [], isLoading: true };
 
   componentDidMount() {
     getArticleById(this.props["article_id"]).then((article) => {
-      this.setState({ article });
+      this.setState({ article, isLoading: false });
     });
     getArticleComments(this.props["article_id"]).then((comments) => {
       this.setState({ comments });
@@ -53,8 +54,10 @@ class ArticlePage extends Component {
   };
 
   render() {
-    const { article, comments } = this.state;
-
+    const { article, comments, isLoading } = this.state;
+    if (isLoading) {
+      return <Loader />;
+    }
     return (
       <div>
         <div className="article-page-links">
@@ -67,6 +70,7 @@ class ArticlePage extends Component {
 
           <h1>Welcome to the Article page</h1>
         </div>
+
         <div className="article-grid-container">
           <div className="main-article">
             <h2>{article.title}</h2>
