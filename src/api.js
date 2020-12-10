@@ -52,6 +52,6 @@ export const postCommentToArticle = (articleId, commentContent) => {
   return ncNewsApi
     .post(`/articles/${articleId}/comments`, commentContent)
     .then((response) => {
-      console.log(response);
+      return response.data.comment;
     });
 };

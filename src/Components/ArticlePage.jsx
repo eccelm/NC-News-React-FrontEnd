@@ -5,10 +5,14 @@ import {
   postCommentToArticle,
 } from "../api";
 import { Link } from "@reach/router";
-import Comments from "./CommentsDisplay";
+import Comments from "./Comments";
 import CommentAdder from "./CommentAdder";
 
-class Article extends Component {
+/*
+  Next Steps:
+   need component did update to get the url to do something different for the next page button
+  */
+class ArticlePage extends Component {
   state = { article: [], comments: [] };
 
   componentDidMount() {
@@ -19,19 +23,25 @@ class Article extends Component {
       this.setState({ comments });
     });
   }
-  // need component did update to get the url to do something different
 
-  handleNewComment = (article_id, commentContent) => {
-    postCommentToArticle(article_id, commentContent).then((newComment) => {
-      console.log(newComment);
-      // eventually set state here?
-      /*
-      this.setState((currentState) => {
-        return { article: currentState.article,
-                comments: [...currentState.comments, newComment]
-        }       
-      })  */
-    });
+  componentDidUpdate(prevState, prevProps) {
+    // console.log(prevProps);
+    //  console.dir(prevState);
+  }
+  handleNewComment = (commentContent) => {
+    const { article_id } = this.state.article;
+    return postCommentToArticle(article_id, commentContent).then(
+      (newComment) => {
+        console.log(newComment);
+
+        this.setState((currentState) => {
+          return {
+            article: currentState.article,
+            comments: [...currentState.comments, newComment],
+          };
+        });
+      }
+    );
   };
 
   render() {
@@ -39,16 +49,15 @@ class Article extends Component {
 
     return (
       <div>
-        <div className="temp-div-to-remove">
+        <div className="article-page-links">
           <Link to="/articles">
             <button>Go Back</button>
           </Link>
           <Link to={`/articles/${article["article_id"] + 1}`}>
-            <button>Next Article - not changing page</button>
+            <button>Next Article</button>
           </Link>
 
           <h1>Welcome to the Article page</h1>
-          <p>Temporary to display keys{JSON.stringify(Object.keys(article))}</p>
         </div>
         <div className="article-grid-container">
           <div className="main-article">
@@ -61,10 +70,7 @@ class Article extends Component {
           </div>
 
           <div className="add-comment">
-            <CommentAdder
-              handleNewComment={this.handleNewComment}
-              article_id={article.article_id}
-            />
+            <CommentAdder handleNewComment={this.handleNewComment} />
           </div>
         </div>
       </div>
@@ -72,4 +78,4 @@ class Article extends Component {
   }
 }
 
-export default Article;
+export default ArticlePage;

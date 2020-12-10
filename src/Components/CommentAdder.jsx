@@ -1,15 +1,20 @@
 import React from "react";
-// class comp??  with state to catch the data?
-// keep it out of the url good practice? not sensitive
+/*
+Next Step: Refactor into a controlled component
+Why --> current accessing of values would be disrupted by a new element altering the array and making the inputted indexes incorrect (see example in Pauls thurs lecture)
+*/
 function CommentAdder(props) {
   console.log(props);
 
   function handleSubmit(event) {
-    console.log("I'm through", event);
-    console.log(event.target.value);
-    console.log(event.target[0].value);
-    console.log(event.target[1].value);
     event.preventDefault();
+
+    // refactor into controlled component
+    const comment = {
+      username: event.target[0].value,
+      body: event.target[1].value,
+    };
+    props.handleNewComment(comment);
   }
   /*
 handleSubmit(event) func here?
@@ -23,7 +28,7 @@ run handleNewComment()
       <form onSubmit={handleSubmit}>
         <label htmlFor="comment-user">
           Your username:
-          <input id="comment-user " type="text" required />
+          <input value="tickle122" id="comment-user " type="text" disabled />
         </label>
         <br />
         <label htmlFor="comment-body">
