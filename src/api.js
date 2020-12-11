@@ -8,9 +8,9 @@ const ncNewsApi = axios.create({
 /*
 REMEMBER TO ALTER THEN BLOCK OF DELETE in API WHEN GOING BACK TO IT
 */
-export const getArticles = (queryKey, queryValue) => {
+export const getArticles = (queryKey, queryValue, order = "desc") => {
   return ncNewsApi
-    .get("/articles", { params: { [queryKey]: queryValue } })
+    .get("/articles", { params: { [queryKey]: queryValue, order: order } })
     .then((response) => {
       return response.data.articles;
     });

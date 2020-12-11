@@ -21,6 +21,7 @@ function ArticlesList(props) {
                 </div>
               </div>
             </Collapsible>
+            <h3>...</h3>
           </li>
         );
       })}

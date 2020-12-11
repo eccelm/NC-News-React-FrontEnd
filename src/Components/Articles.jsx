@@ -13,8 +13,8 @@ class Articles extends Component {
     });
   }
 
-  handleQuery = (queryKey, queryValue) => {
-    getArticles(queryKey, queryValue).then((articles) => {
+  handleQuery = (queryKey, queryValue, order) => {
+    getArticles(queryKey, queryValue, order).then((articles) => {
       this.setState({ articles });
     });
   };
