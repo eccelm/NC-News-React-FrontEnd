@@ -6,7 +6,7 @@ const ncNewsApi = axios.create({
 
 // mcNewsApi.get() .. is neater :)
 /*
-REMEMBER TO ALTER THEN BLOCK OF DELETE WHEN GOING BACK TO IT
+REMEMBER TO ALTER THEN BLOCK OF DELETE in API WHEN GOING BACK TO IT
 */
 export const getArticles = (queryKey, queryValue) => {
   return ncNewsApi
@@ -53,15 +53,23 @@ export const postCommentToArticle = (articleId, commentContent) => {
       return response.data.comment;
     });
 };
-
-export const deleteArticleComment = (article_id, comment_id) => {
-  return ncNewsApi
-    .delete(`/articles/${article_id}/comments/${comment_id}`)
-    .then((response) => {
-      console.log(response, "Hello from axios delete");
-    });
+/*
+Still needs work
+*/
+export const deleteArticleComment = (comment_id) => {
+  return ncNewsApi.delete(`comments/${comment_id}`).then((response) => {
+    console.log(response, "Hello from axios delete");
+    console.log(
+      response.data.comment,
+      "This should be logging an empty object as per API?"
+    );
+    return `${
+      (response.status, response.statusText)
+    } This comment has been deleted `;
+  });
 };
 
+// don't quite understand the inc_votes, taken from the heroku api list - is the backend set up to know that inc_votes: number-here impacts the vote?
 export const upVote = (article_id, comment_id) => {
   if (comment_id) {
     return ncNewsApi
@@ -71,9 +79,11 @@ export const upVote = (article_id, comment_id) => {
         return response.data.comment.votes;
       }); // comment votes
   } else {
-    return ncNewsApi.patch(`/articles/${article_id}`).then((response) => {
-      console.log(response.data, "Hello from the patched article vote");
-      return response.data.article.votes;
-    }); //article votes
+    return ncNewsApi
+      .patch(`/articles/${article_id}`, { inc_votes: 1 })
+      .then((response) => {
+        console.log(response.data, "Hello from the patched article vote");
+        return response.data.article.votes;
+      }); //article votes
   }
 };

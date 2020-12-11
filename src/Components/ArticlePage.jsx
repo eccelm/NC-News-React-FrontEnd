@@ -47,10 +47,10 @@ class ArticlePage extends Component {
   };
 
   removeComment = (comment_id) => {
-    console.log("hallo wie geht's");
-    console.log(this);
-    const { article_id } = this.state.article;
-    deleteArticleComment(article_id, comment_id).then();
+    deleteArticleComment(comment_id).then((response) => {
+      console.log(response);
+      // set state?
+    });
   };
 
   render() {

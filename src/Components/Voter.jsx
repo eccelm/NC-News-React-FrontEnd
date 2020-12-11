@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { upVote } from "../api";
 /*
 NOT working properly
-- can send vote again in comments
-- vote state ISNT saving for the article vote path
+- can send vote again in comments (preventDefault? disabled not working correctly? or working within the limits of app e.g. because no user saved a refresh is like a new user again, but confirmed have to refresh the page in order to vote again)
+
+change stylingon button so clear cannot be reclicked
 */
 
 class Voter extends Component {

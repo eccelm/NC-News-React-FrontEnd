@@ -26,12 +26,8 @@ class Articles extends Component {
     }
     return (
       <div>
-        <h2>
-          Use the filters below to choose a topic and click on a title to expand
-          the article
-        </h2>
         <ArticlesFilter handleQuery={this.handleQuery} />
-
+        <h2>Click on a title to expand the article</h2>
         <ArticlesList articles={articles} />
       </div>
     );
