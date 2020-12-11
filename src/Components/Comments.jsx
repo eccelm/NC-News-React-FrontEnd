@@ -28,9 +28,9 @@ function Comments(props) {
                   X
                 </button>
               ) : null}
+              <p>{comment.body}</p>
               <p> User: {comment.author}</p>
               <Voter comment={comment} />
-              <p>{comment.body}</p>
             </li>
           );
         })}

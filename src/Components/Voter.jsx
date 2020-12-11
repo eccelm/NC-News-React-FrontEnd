@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { upVote } from "../api";
 /*
 NOT working properly
+
+- comments vote buttons now not optimistically rendering ???? 
 - can send vote again in comments (preventDefault? disabled not working correctly? or working within the limits of app e.g. because no user saved a refresh is like a new user again, but confirmed have to refresh the page in order to vote again)
 
 change stylingon button so clear cannot be reclicked
@@ -18,7 +20,6 @@ class Voter extends Component {
   handleClick = (event) => {
     console.log(this.props);
     if (this.props.comment) {
-      console.log("I'm not breaking anymore");
       const { article_id } = this.props.comment;
       const { comment_id } = this.props.comment;
       console.log(article_id, comment_id);
