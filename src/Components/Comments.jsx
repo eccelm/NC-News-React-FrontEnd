@@ -1,6 +1,13 @@
 import React from "react";
 import Voter from "./Voter";
 // before continuing will also need a refactor to class comp in order to access the comment_id ??
+
+/*
+ *
+ *  NOTE
+ *   at current point, tickle122 is the hardcoded user and ony
+ *   their comments can be deleted
+ */
 function Comments(props) {
   function handleClick(event) {
     const comment_id = event.target.value;
@@ -31,6 +38,7 @@ function Comments(props) {
               <p>{comment.body}</p>
               <p> User: {comment.author}</p>
               <Voter comment={comment} />
+              <p>Written: {comment.created_at.slice(0, 10)}</p>
             </li>
           );
         })}

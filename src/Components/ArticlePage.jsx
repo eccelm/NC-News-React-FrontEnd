@@ -39,7 +39,7 @@ class ArticlePage extends Component {
         this.setState((currentState) => {
           return {
             article: currentState.article,
-            comments: [...currentState.comments, newComment],
+            comments: [newComment, ...currentState.comments],
           };
         });
       }
@@ -74,6 +74,7 @@ class ArticlePage extends Component {
         <div className="article-grid-container">
           <div className="main-article">
             <h2>{article.title}</h2>
+            <p>By: {article.author}</p>
             <p>{article.body}</p>
           </div>
 
