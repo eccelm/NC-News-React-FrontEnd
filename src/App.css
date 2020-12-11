@@ -1,7 +1,9 @@
 .App {
   text-align: center;
   background-color: #cae9ff;
-  height: min-content(100vh) max-content(auto);
+}
+.Homepage {
+  height: min-content(100vh);
 }
 /*
   Not refactored yet, so if you like CSS, I recommend you don't read on unless you like horror stories
@@ -51,6 +53,8 @@ button:hover {
   color: white;
 }
 ul {
+  margin: auto;
+  padding: 10px 0px;
   align-items: center;
   width: 90%;
 }
