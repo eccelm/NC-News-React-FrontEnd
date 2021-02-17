@@ -34,8 +34,6 @@ class ArticlePage extends Component {
     const { article_id } = this.state.article;
     return postCommentToArticle(article_id, commentContent).then(
       (newComment) => {
-        console.log(newComment);
-
         this.setState((currentState) => {
           return {
             article: currentState.article,
@@ -45,11 +43,30 @@ class ArticlePage extends Component {
       }
     );
   };
-
+  /*
+  filter isn't working as should !== doesn't change anything and === removes all
+*/
   removeComment = (comment_id) => {
     deleteArticleComment(comment_id).then((response) => {
       console.log(response);
-      // set state?
+      console.log(comment_id);
+
+      this.setState((currentState) => {
+        const filteredComments = currentState.comments.filter((comment) => {
+          console.log(
+            `arg1: ${
+              comment.comment_id
+            }typeof:${typeof comment.comment_id} arg2: ${comment_id}typeof:${typeof comment_id} `
+          );
+          return comment.comment_id !== parseInt(comment_id);
+
+          // console.log("comment", comment.comment_id);
+        });
+        console.log(filteredComments, `should no longer contain ${comment_id}`);
+        return {
+          comments: filteredComments,
+        };
+      });
     });
   };
 

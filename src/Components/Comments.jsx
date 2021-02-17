@@ -1,9 +1,7 @@
 import React from "react";
 import Voter from "./Voter";
-// before continuing will also need a refactor to class comp in order to access the comment_id ??
 
 /*
- *
  *  NOTE
  *   at current point, tickle122 is the hardcoded user and ony
  *   their comments can be deleted
@@ -11,9 +9,6 @@ import Voter from "./Voter";
 function Comments(props) {
   function handleClick(event) {
     const comment_id = event.target.value;
-    console.log(props);
-    console.log("clickedy click");
-    console.log(event.target.value);
     props.removeComment(comment_id);
     // reset state in parent class component
   }
@@ -32,7 +27,7 @@ function Comments(props) {
                   onClick={handleClick}
                   className="delete-comment-button"
                 >
-                  X
+                  delete X
                 </button>
               ) : null}
               <p>{comment.body}</p>

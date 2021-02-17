@@ -9,19 +9,22 @@ function ArticlesList(props) {
       {props.articles.map((article) => {
         return (
           <li key={article.article_id}>
-            <Collapsible trigger={article.title}>
-              <div className="collapsed-article-container">
-                <Link className="collapsed-1" to={`${article.article_id}`}>
-                  Click here to read the full article
-                </Link>
-                <p className="collapsed-2"> Article by: {article.author}</p>
-                <div className="collapsed-3">
-                  <Voter article={article} />
+            <h3>
+              {article.title}{" "}
+              <Link to={`${article.article_id}`}> Go to article</Link>{" "}
+            </h3>
+            <Collapsible trigger={<button>v More Details</button>}>
+              <div className="article-list-item-container">
+                <div className="ali-details">
+                  <p> Article by: {article.author}</p>
+                  <p>Posted: {article.created_at.slice(0, 10)}</p>
                   <p>Number of Comments: {article.comment_count}</p>
+                </div>
+                <div className="ali-votes">
+                  <Voter article={article} />
                 </div>
               </div>
             </Collapsible>
-            <h3>...</h3>
           </li>
         );
       })}

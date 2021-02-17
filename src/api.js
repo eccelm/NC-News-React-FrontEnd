@@ -58,22 +58,16 @@ Still needs work
 */
 export const deleteArticleComment = (comment_id) => {
   return ncNewsApi.delete(`comments/${comment_id}`).then((response) => {
-    console.log(response, "Hello from axios delete");
-    console.log(
-      response.data.comment,
-      "This should be logging an empty object as per API?"
-    );
     return `${
       (response.status, response.statusText)
     } This comment has been deleted `;
   });
 };
 
-// don't quite understand the inc_votes, taken from the heroku api list - is the backend set up to know that inc_votes: number-here impacts the vote?
-export const upVote = (article_id, comment_id) => {
+export const upVote = (article_id, comment_id, vote) => {
   if (comment_id) {
     return ncNewsApi
-      .patch(`comments/${comment_id}`, { inc_votes: 1 })
+      .patch(`comments/${comment_id}`, { inc_votes: vote })
       .then((response) => {
         console.log(response, "Hello from the patched comment  vote");
         return response.data.comment.votes;

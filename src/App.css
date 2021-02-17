@@ -34,19 +34,18 @@
 }
 
 button {
+  margin: 20px;
+  height: 3em;
+  width: auto;
+  padding: 15px;
+  border: 10px;
+  border-radius: 4px;
+  transition: 0.3s ease-in-out;
   background-color: #ebf7ff;
   color: black;
   font-size: 20px;
   text-align: center;
   text-decoration: none;
-  font-size: x-large;
-  padding: 15px;
-  border: 10px;
-  margin: 30px;
-  height: 3em;
-  width: auto;
-  border-radius: 4px;
-  transition: 0.3s ease-in-out;
 }
 button:hover {
   background-color: #a44b73;
@@ -59,44 +58,21 @@ ul {
   width: 90%;
 }
 li {
-  padding: 20px;
+  padding: 10px;
   margin: 5px;
   color: black;
   background-color: #fbfef9;
   list-style: none;
 }
-.Header {
-  background-color: #1b4965;
-  height: 10%;
+
+.article-list-item-container {
   display: flex;
-  align-items: flex-end;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  align-content: stretch;
 }
 
-.Homepage {
-  font-size: 50px;
-}
-
-.collapsed-article-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  width: 100%;
-}
-
-.collapsed-1 {
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-  width: 100%;
-}
-.collapsed-2 {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-}
-.collapsed-3 {
-  grid-column: 3 / 4;
-  grid-row: 1 / 2;
-  background-color: wheat;
-}
 .article-grid-container {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -139,8 +115,8 @@ li {
 .delete-comment-button {
   color: #1b4965;
   background-color: cadetblue;
-  height: 20px;
-  width: 25px;
+  height: auto;
+  width: auto;
   font-size: 15px;
   align-content: center;
   padding: 0%;
@@ -148,6 +124,11 @@ li {
 }
 
 .Collapsible {
-  padding: 20px;
+  padding: 10px;
   background-color: lavender;
+}
+
+.Header {
+  background-color: #1b4965;
+  height: 10%;
 }
