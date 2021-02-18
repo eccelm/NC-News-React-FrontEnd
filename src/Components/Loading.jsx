@@ -1,16 +1,13 @@
-import React, { Component } from 'react' 
+import React from 'react' 
 
-class Loader extends Component {
-  state = {isLoading: true}
-
-  render() {
+function Loader() {
+  
     return (
-      <div>
+      <div className="loader">
       <h2>Content is loading...</h2>
       <h2>📰</h2>
       </div>
     )
-  }
 }
 
 export default Loader;
