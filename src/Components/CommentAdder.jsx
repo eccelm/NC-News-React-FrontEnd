@@ -1,9 +1,14 @@
 import React from "react";
 /*
-Next Step: Refactor into a controlled component
-Why --> current accessing of values would be disrupted by a new element altering the array and making the inputted indexes incorrect (see example in Pauls thurs lecture)
+Will need refactor to not have a hard-coded user 
+
 */
+
 function CommentAdder(props) {
+
+  // const [username, setUsername] = useState('')
+  // const [body, setBody] = useState('')
+
   function handleSubmit(event) {
     event.preventDefault();
 

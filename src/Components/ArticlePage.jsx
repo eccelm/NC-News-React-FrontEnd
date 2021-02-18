@@ -7,7 +7,7 @@ import {
 } from '../api';
 import { Link } from '@reach/router';
 import Loader from './Loading';
-import Comments from "./Comments";
+import Comments from './Comments';
 // import CommentAdder from "./CommentAdder";
 
 function ArticlePage(props) {
@@ -16,13 +16,17 @@ function ArticlePage(props) {
 	const [comments, setComments] = useState();
 	const [loading, setLoading] = useState(true);
 
-	useEffect(async () => {
-		let article = await getArticleById(props.article_id);
-		let comments = await getArticleComments(props.article_id);
-		setArticle(article);
-		setComments(comments);
-		setLoading(false);
-	}, []);
+	useEffect(() => {
+		async function fetchData() {
+			let article = await getArticleById(props.article_id);
+			let comments = await getArticleComments(props.article_id);
+			setArticle(article);
+			setComments(comments);
+			setLoading(false);
+		}
+		fetchData();
+
+	}, [props.article_id]);
 
 	/* Next elements to refactor : 
   componentDidMount() {
@@ -88,7 +92,7 @@ function ArticlePage(props) {
 				</div>
 
 				<div className='article-comments'>
-					<Comments comments={comments}/>
+					<Comments comments={comments} />
 				</div>
 
 				<div className='add-comment'>
