@@ -1,5 +1,5 @@
 import React from "react";
-import Voter from "./Voter";
+// import Voter from "./Voter";
 
 /*
  *  NOTE
@@ -34,7 +34,7 @@ function Comments(props) {
               ) : null}
               <p>{comment.body}</p>
               <p> User: {comment.author}</p>
-              <Voter comment={comment} />
+              {/* <Voter comment={comment} /> */}
               <p>Written: {comment.created_at.slice(0, 10)}</p>
             </li>
           );

@@ -4,10 +4,6 @@ const ncNewsApi = axios.create({
 	baseURL: 'https://marthas-nc-newsfeed.herokuapp.com/api',
 });
 
-// mcNewsApi.get() .. is neater :)
-/*
-REMEMBER TO ALTER THEN BLOCK OF DELETE in API WHEN GOING BACK TO IT
-*/
 export const getArticles = (queryKey, queryValue, order = 'desc') => {
 	return ncNewsApi
 		.get('/articles', { params: { [queryKey]: queryValue, order: order } })

@@ -1,7 +1,7 @@
 import React from "react";
 import Collapsible from "react-collapsible";
 import { Link } from "@reach/router";
-import Voter from "./Voter";
+// import Voter from "./Voter";
 
 function ArticlesList(props) {
   return (
@@ -21,7 +21,7 @@ function ArticlesList(props) {
                   <p>Number of Comments: {article.comment_count}</p>
                 </div>
                 <div className="ali-votes">
-                  <Voter article={article} />
+                  {/* <Voter article={article} /> */}
                 </div>
               </div>
             </Collapsible>
