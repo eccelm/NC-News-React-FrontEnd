@@ -1,7 +1,7 @@
 import React from 'react';
 import UserContext from './UserContext'
 
-const AppState = ({children}) =>{
+const UserState = ({children}) =>{
 return (
    <UserContext.Provider value={{
       message: "this is from the context"
@@ -10,4 +10,4 @@ return (
    </UserContext.Provider>
 )}
 
-export default AppState;
+export default UserState;
