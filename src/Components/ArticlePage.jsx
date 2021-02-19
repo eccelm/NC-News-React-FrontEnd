@@ -5,11 +5,15 @@ import {
 	postCommentToArticle,
 	deleteArticleComment,
 } from '../api';
-import { Link } from '@reach/router';
+//import { Link } from '@reach/router';
 import Loader from './Loading';
 import Comments from './Comments';
-// import CommentAdder from "./CommentAdder";
-
+ import CommentAdder from "./CommentAdder";
+/*
+Promise.All ??
+split into seperate useEffects
+Consider refactor to objects with own personal {data loading error}
+*/
 function ArticlePage(props) {
 	console.log(props, 'Current props');
 	const [article, setArticle] = useState();
@@ -17,66 +21,45 @@ function ArticlePage(props) {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		async function fetchData() {
+		async function fetchArticle() {
 			let article = await getArticleById(props.article_id);
 			let comments = await getArticleComments(props.article_id);
 			setArticle(article);
 			setComments(comments);
 			setLoading(false);
 		}
-		fetchData();
+	 fetchArticle();
 
 	}, [props.article_id]);
 
-	/* Next elements to refactor : 
-  componentDidMount() {
-    getArticleById(this.props["article_id"]).then((article) => {
-      this.setState({ article, isLoading: false });
-    });
-    getArticleComments(this.props["article_id"]).then((comments) => {
-      this.setState({ comments });
-    });
+  function handleNewComment (comment) {
+    const { article_id } = article;
+    console.log("checking id ",article_id)
+    postCommentToArticle(article_id, comment).then((comment) => {
+    
+ console.log("comment ", comment);
+
+      setComments(prevComments=>[comment, ...prevComments])
+    })
+  };
+function removeComment(comment_id) {
+  console.log(comment_id)
+  console.log("comments length beofre ", comments.length)
+  deleteArticleComment(comment_id).then(
+    (res) => {
+      console.log("comments length after ", comments.length)
+ console.log("response ", res);
+const filteredComments = comments.filter(
+  (comment) =>{
+    console.log("inside filter", comment, comment.comment_id, typeof comment.comment_id, "hopefully the higher-level comment id>>", comment_id, typeof comment_id)
+    return comment.comment_id !== parseInt(comment_id)
   }
-  // handleNewComment = (commentContent) => {
-  //   const { article_id } = this.state.article;
-  //   return postCommentToArticle(article_id, commentContent).then(
-  //     (newComment) => {
-  //       this.setState((currentState) => {
-  //         return {
-  //           article: currentState.article,
-  //           comments: [newComment, ...currentState.comments],
-  //         };
-  //       });
-  //     }
-  //   );
-  // };
-  /*
-  filter isn't working as should !== doesn't change anything and === removes all
-
-  // removeComment = (comment_id) => {
-  //   deleteArticleComment(comment_id).then((response) => {
-  //     console.log(response);
-  //     console.log(comment_id);
-
-  //     this.setState((currentState) => {
-  //       const filteredComments = currentState.comments.filter((comment) => {
-  //         console.log(
-  //           `arg1: ${
-  //             comment.comment_id
-  //           }typeof:${typeof comment.comment_id} arg2: ${comment_id}typeof:${typeof comment_id} `
-  //         );
-  //         return comment.comment_id !== parseInt(comment_id);
-
-  //         // console.log("comment", comment.comment_id);
-  //       });
-  //       console.log(filteredComments, `should no longer contain ${comment_id}`);
-  //       return {
-  //         comments: filteredComments,
-  //       };
-  //     });
-  //   });
-  // };
-*/
+)
+ console.log("filteredComments ", filteredComments);
+ setComments(filteredComments)
+    }
+  )
+}
 
 	if (loading) {
 		return <Loader />;
@@ -92,11 +75,11 @@ function ArticlePage(props) {
 				</div>
 
 				<div className='article-comments'>
-					<Comments comments={comments} />
+					<Comments comments={comments} removeComment={removeComment}/>
 				</div>
 
 				<div className='add-comment'>
-					{/* <CommentAdder handleNewComment={this.handleNewComment} /> */}
+					<CommentAdder tempUser="tickle122" handleNewComment={handleNewComment}/>
 				</div>
 			</div>
 		</div>

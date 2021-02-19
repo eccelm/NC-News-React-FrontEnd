@@ -7,8 +7,10 @@ import Voter from "./Voter";
  *   their comments can be deleted
  */
 function Comments(props) {
+
   function handleClick(event) {
     const comment_id = event.target.value;
+    console.log(comment_id)
     props.removeComment(comment_id);
     // reset state in parent class component
   }
