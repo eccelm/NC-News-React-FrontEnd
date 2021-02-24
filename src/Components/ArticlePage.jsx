@@ -15,7 +15,7 @@ split into seperate useEffects
 Consider refactor to objects with own personal {data loading error}
 */
 function ArticlePage(props) {
-	console.log(props, 'Current props');
+	//console.log(props, 'Current props');
 	const [article, setArticle] = useState();
 	const [comments, setComments] = useState();
 	const [loading, setLoading] = useState(true);
