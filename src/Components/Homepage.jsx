@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link } from '@reach/router';
-import { getUsersByUsername } from '../api';
+//import { getUsersByUsername } from '../api';
 import UserContext from '../Context/UserContext';
 
 function Homepage() {
@@ -11,12 +11,14 @@ function Homepage() {
 		avatar:
 			'https://cdn.pixabay.com/photo/2017/01/31/17/48/animal-2025913_960_720.png',
 	});
-	const [validated, setValidated] = useState(false);
+	//const [validated, setValidated] = useState(false);
   
 	function handleChange(event) {
 		const { value, name } = event.target;
 		console.log(value, name, newUser);
-		setNewUser({ ...newUser, [name]: value });
+		setNewUser((prevUser)=>{
+return {...prevUser, [name]: value}
+		});
 		console.log(newUser);
 	}
 	function handleNewUser(event) {

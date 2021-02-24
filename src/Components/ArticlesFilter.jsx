@@ -1,47 +1,55 @@
-import React, { Component } from "react";
+import React, { useState } from 'react';
 
-class ArticlesFilter extends Component {
-  /*
-  Next Task: 
-    Refactor api req so that it can simultaneously the different queries i.e. stay on asc order while changing between topics or a diff sort by
-  */
-  state = { currentQuery: "", currentQueryValue: "", order: "" };
+function ArticlesFilter(props) {
+	const [filters, setFilters] = useState({
+		topic: '',
+		sort_by: 'author',
+		order: 'desc',
+	});
+	// state = { currentQuery: "", currentQueryValue: "", order: "" };
+	function handleFilter(event) {
+		const { name, value } = event.target;
+		console.log(name, value);
+		setFilters((prevFilters) => {
+			return { ...prevFilters, [name]: value };
+		});
+    console.log(filters)
+	}
+	// handleClick = (event) => {
+	//   let key = event.target.id;
+	//   console.log(key);
+	//   let value = event.target.value;
+	//   //console.log(key, "key<<< >>>value", value);
+	//   if (key === "order") {
+	//     this.setState({ order: value });
+	//   } else {
+	//     this.setState({ currentQuery: key, currentQueryValue: value });
+	//   }
+	//   console.log(this.state);
+	// };
 
-  handleClick = (event) => {
-    let key = event.target.id;
-    console.log(key);
-    let value = event.target.value;
-    //console.log(key, "key<<< >>>value", value);
-    if (key === "order") {
-      this.setState({ order: value });
-    } else {
-      this.setState({ currentQuery: key, currentQueryValue: value });
-    }
-    console.log(this.state);
-  };
+	// componentDidUpdate(prevProps, prevState) {
+	//   console.log(prevProps);
+	//   console.log(prevState);
+	//   const { currentQuery, currentQueryValue, order } = this.state;
+	//   if (
+	//     prevState.currentQueryValue !== this.state.currentQueryValue ||
+	//     prevState.order !== this.state.order
+	//   ) {
+	//     console.log("testing conditional logic in the update func");
+	//     this.props.handleQuery(currentQuery, currentQueryValue, order);
+	//   }
+	// }
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log(prevProps);
-    console.log(prevState);
-    const { currentQuery, currentQueryValue, order } = this.state;
-    if (
-      prevState.currentQueryValue !== this.state.currentQueryValue ||
-      prevState.order !== this.state.order
-    ) {
-      console.log("testing conditional logic in the update func");
-      this.props.handleQuery(currentQuery, currentQueryValue, order);
-    }
-  }
-  render() {
-    return (
-      <>
-        <button name="order" id="order" onClick={this.handleClick} value="asc">
+	return (
+		<>
+			<button name="order" id="order" value="asc" onClick={handleFilter}>
           Ascending
         </button>
-        <button onClick={this.handleClick} id="order" value="desc">
+        <button id="order" name="order" value="desc" onClick={handleFilter}>
           Descending
         </button>
-        <p>Topic:</p>
+			{/* <p>Topic:</p>
         <button onClick={this.handleClick} value="" id="topic">
           All Topics
         </button>
@@ -53,25 +61,24 @@ class ArticlesFilter extends Component {
         </button>
         <button onClick={this.handleClick} value="cooking" id="topic">
           Cooking
-        </button>
+        </button> */}
 
-        <p>Sort By:</p>
-        <select
-          className="filterSelect"
-          name="sort_by"
-          id="sort_by"
-          onClick={this.handleClick}
-        >
-          <optgroup label="Sort By">
-            <option value="author">Author</option>
-            <option value="topic" disabled>
-              Topic
-            </option>
-          </optgroup>
-        </select>
-      </>
-    );
-  }
+			<label htmlFor='sort_by'>Sort By: </label>
+			<select
+				className='filterSelect'
+				name='sort_by'
+				id='sort_by'
+				onClick={handleFilter}>
+				<optgroup label='Sort By'>
+					<option value='author'>Author</option>
+					<option value='comment_count'>
+						Comments
+					</option>
+					<option value='votes'>Votes</option>
+				</optgroup>
+			</select>
+		</>
+	);
 }
 
 export default ArticlesFilter;
