@@ -47,15 +47,16 @@ function ArticlePage(props) {
 			console.log('comments length after ', comments.length);
 			console.log('response ', res);
 			const filteredComments = comments.filter((comment) => {
-				console.log(
-					'inside filter',
-					comment,
-					comment.comment_id,
-					typeof comment.comment_id,
-					'hopefully the higher-level comment id>>',
-					comment_id,
-					typeof comment_id
-				);
+				// console.log(
+				// 	'inside filter',
+				// 	comment
+				// 	,
+				// 	comment.comment_id,
+				// 	typeof comment.comment_id,
+				// 	'hopefully the higher-level comment id>>',
+				// 	comment_id,
+				// 	typeof comment_id
+				// );
 				return comment.comment_id !== parseInt(comment_id);
 			});
 			console.log('filteredComments ', filteredComments);

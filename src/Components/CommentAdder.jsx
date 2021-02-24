@@ -7,7 +7,7 @@ function CommentAdder(props) {
 	const [body, setBody] = useState('');
 
 	function handleInput(key, value) {
-		console.log(key, value);
+		//console.log(key, value);
 		setBody(value);
 		console.log(body);
 	}
