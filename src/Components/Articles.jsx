@@ -24,9 +24,12 @@ function Articles() {
 	function handleFilter(event) {
 		const { name, value } = event.target;
 		console.log(name, value);
+		if(filters[name] !== value){
 		setFilters((prevFilters) => {
 			return { ...prevFilters, [name]: value };
+		
 		});
+	}
     console.log(filters)
 	}
 
