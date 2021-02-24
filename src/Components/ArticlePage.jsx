@@ -8,7 +8,7 @@ import {
 //import { Link } from '@reach/router';
 import Loader from './Loading';
 import Comments from './Comments';
- import CommentAdder from "./CommentAdder";
+import CommentAdder from './CommentAdder';
 /*
 Promise.All ??
 split into seperate useEffects
@@ -28,38 +28,40 @@ function ArticlePage(props) {
 			setComments(comments);
 			setLoading(false);
 		}
-	 fetchArticle();
-
+		fetchArticle();
 	}, [props.article_id]);
 
-  function handleNewComment (comment) {
-    const { article_id } = article;
-    console.log("checking id ",article_id)
-    postCommentToArticle(article_id, comment).then((comment) => {
-    
- console.log("comment ", comment);
+	function handleNewComment(comment) {
+		const { article_id } = article;
+		console.log('checking id ', article_id);
+		postCommentToArticle(article_id, comment).then((comment) => {
+			console.log('comment ', comment);
 
-      setComments(prevComments=>[comment, ...prevComments])
-    })
-  };
-function removeComment(comment_id) {
-  console.log(comment_id)
-  console.log("comments length beofre ", comments.length)
-  deleteArticleComment(comment_id).then(
-    (res) => {
-      console.log("comments length after ", comments.length)
- console.log("response ", res);
-const filteredComments = comments.filter(
-  (comment) =>{
-    console.log("inside filter", comment, comment.comment_id, typeof comment.comment_id, "hopefully the higher-level comment id>>", comment_id, typeof comment_id)
-    return comment.comment_id !== parseInt(comment_id)
-  }
-)
- console.log("filteredComments ", filteredComments);
- setComments(filteredComments)
-    }
-  )
-}
+			setComments((prevComments) => [comment, ...prevComments]);
+		});
+	}
+	function removeComment(comment_id) {
+		console.log(comment_id);
+		console.log('comments length beofre ', comments.length);
+		deleteArticleComment(comment_id).then((res) => {
+			console.log('comments length after ', comments.length);
+			console.log('response ', res);
+			const filteredComments = comments.filter((comment) => {
+				console.log(
+					'inside filter',
+					comment,
+					comment.comment_id,
+					typeof comment.comment_id,
+					'hopefully the higher-level comment id>>',
+					comment_id,
+					typeof comment_id
+				);
+				return comment.comment_id !== parseInt(comment_id);
+			});
+			console.log('filteredComments ', filteredComments);
+			setComments(filteredComments);
+		});
+	}
 
 	if (loading) {
 		return <Loader />;
@@ -75,11 +77,14 @@ const filteredComments = comments.filter(
 				</div>
 
 				<div className='article-comments'>
-					<Comments comments={comments} removeComment={removeComment}/>
+					<Comments comments={comments} removeComment={removeComment} />
 				</div>
 
 				<div className='add-comment'>
-					<CommentAdder tempUser="tickle122" handleNewComment={handleNewComment}/>
+					<CommentAdder
+						tempUser='tickle122'
+						handleNewComment={handleNewComment}
+					/>
 				</div>
 			</div>
 		</div>

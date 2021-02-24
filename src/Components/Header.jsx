@@ -1,10 +1,14 @@
-import React from "react";
+import React, {useContext}from "react";
+import UserContext from '../Context/UserContext';
 import { Link } from "@reach/router";
 import homeButton from "../Images/homebutton.png";
 
 function Header() {
+	const { message, user } = useContext(UserContext);
+
   return (
     <div className="Header">
+      <p style={{color: `white`}}>Logged in as: {user}</p>
       <Link to="/">
         {" "}
         <img
