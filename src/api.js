@@ -4,9 +4,9 @@ const ncNewsApi = axios.create({
 	baseURL: 'https://marthas-nc-newsfeed.herokuapp.com/api',
 });
 
-export const getArticles = (queryKey, queryValue, order = 'desc') => {
+export const getArticles = (topic, sort_by, order) => {
 	return ncNewsApi
-		.get('/articles', { params: { [queryKey]: queryValue, order: order } })
+		.get('/articles', {params:{topic: topic, sort_by: sort_by, order: order}})
 		.then(({data: {articles}}) => {
 			return articles;
 		});
