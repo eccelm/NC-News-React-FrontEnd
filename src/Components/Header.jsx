@@ -4,7 +4,7 @@ import { Link } from "@reach/router";
 import homeButton from "../Images/homebutton.png";
 
 function Header() {
-	const {  user } = useContext(UserContext);
+	const {  user, setUser } = useContext(UserContext);
 
   return (
     <div className="Header">
@@ -19,7 +19,15 @@ function Header() {
           className="home-button"
         />{" "}
       </Link>
-
+<button onClick={()=>{
+  setUser(    {
+    username: 'guest',
+    name: 'guest',
+    avatar: ''
+ })
+  alert(`you are logging out`)}}>
+  LOGOUT
+</button>
       <span></span>
     </div>
   );

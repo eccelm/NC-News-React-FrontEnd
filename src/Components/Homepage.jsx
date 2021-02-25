@@ -1,11 +1,12 @@
 import React, { useContext,  useState } from 'react';
 import { Link } from '@reach/router';
 import UserContext from '../Context/UserContext';
-import {login} from '../Context/userFunctions'
+import {getUserByUsername} from '../api'
+//import {login} from '../Context/userFunctions'
 
 function Homepage() {
 // context
-	const {user, setUser } = useContext(UserContext);
+	const {user, setUser} = useContext(UserContext);
 // state
 	const [returningUser, setReturningUser] = useState('');
 	const [newUser, setNewUser] = useState({
@@ -22,6 +23,19 @@ function Homepage() {
 		console.log(returningUser);
 	}
 
+	function login(username) {
+		console.log(username);
+		getUserByUsername(username)
+			.then((user) => {
+			//	console.log(user);
+				setUser(user)
+		
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	
+	}
 	function handleNewUserInput(event) {
 		const { value, name } = event.target;
 		console.log(value, name, newUser);

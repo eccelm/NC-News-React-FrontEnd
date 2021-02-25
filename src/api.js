@@ -40,7 +40,7 @@ export const getUserByUsername = (username) => {
 	return ncNewsApi
   .get(`/users/${username}`)
   .then(({data: {user}}) => {
-	  console.log(user)
+	 // console.log(user)
 		return user;
 	});
 };
