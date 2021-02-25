@@ -1,18 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
+import UserContext from '../Context/UserContext';
 // import Voter from "./Voter";
 
-/*
- *  NOTE
- *   at current point, tickle122 is the hardcoded user and ony
- *   their comments can be deleted
- */
-function Comments(props) {
 
+function Comments(props) {
+	const {  user } = useContext(UserContext);
   function handleClick(event) {
     const comment_id = event.target.value;
     console.log(comment_id)
     props.removeComment(comment_id);
-    // reset state in parent class component
+  
   }
 
   return (
@@ -23,7 +20,7 @@ function Comments(props) {
         {props.comments.map((comment) => {
           return (
             <li key={comment.comment_id}>
-              {comment.author === "tickle122" ? (
+              {comment.author === user.username ? (
                 <button
                   value={comment.comment_id}
                   onClick={handleClick}
