@@ -39,8 +39,9 @@ export const getUsers = () => {
 export const getUserByUsername = (username) => {
 	return ncNewsApi
   .get(`/users/${username}`)
-  .then(({data: {username}}) => {
-		return username;
+  .then(({data: {user}}) => {
+	  console.log(user)
+		return user;
 	});
 };
 

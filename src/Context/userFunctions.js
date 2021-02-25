@@ -1,13 +1,16 @@
 import {getUserByUsername} from '../api'
 
-export async function login(username){
-
-let user = await getUserByUsername(username)
-console.log(user)
-   /*
-
-*/
-
+export function login(username) {
+   console.log(username);
+   getUserByUsername(username)
+      .then((user) => {
+         console.log(user);
+         setUser(user)
+         console.log(user)
+      })
+      .catch((err) => {
+         console.log(err);
+      });
 
 }
 

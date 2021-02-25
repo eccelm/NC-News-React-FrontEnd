@@ -4,11 +4,11 @@ import { Link } from "@reach/router";
 import homeButton from "../Images/homebutton.png";
 
 function Header() {
-	const { message, user } = useContext(UserContext);
+	const {  user } = useContext(UserContext);
 
   return (
     <div className="Header">
-      <p style={{color: `white`}}>Logged in as: {user}</p>
+      <p style={{color: `white`}}>Logged in as: {user.username}</p>
       <Link to="/">
         {" "}
         <img

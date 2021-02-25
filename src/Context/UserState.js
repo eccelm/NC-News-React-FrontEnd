@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import UserContext from './UserContext'
 
 const UserState = ({children}) =>{
+   const [user, setUser] = useState(
+      {
+         username: 'guest',
+         name: 'guest',
+         avatar: ''
+      }
+   );
 return (
    <UserContext.Provider value={{
-      message: "this is from the context",
-      user: 'guest'
-   }}>
+   user, setUser
+   }
+   }>
 {children}
    </UserContext.Provider>
 )}

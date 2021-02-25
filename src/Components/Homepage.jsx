@@ -1,23 +1,32 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext,  useState } from 'react';
 import { Link } from '@reach/router';
-//import { getUsersByUsername } from '../api';
 import UserContext from '../Context/UserContext';
+import {login} from '../Context/userFunctions'
 
 function Homepage() {
-	const { message, user } = useContext(UserContext);
+// context
+	const {user, setUser } = useContext(UserContext);
+// state
+	const [returningUser, setReturningUser] = useState('');
 	const [newUser, setNewUser] = useState({
 		name: '',
 		username: '',
 		avatar:
 			'https://cdn.pixabay.com/photo/2017/01/31/17/48/animal-2025913_960_720.png',
 	});
-	//const [validated, setValidated] = useState(false);
-  
-	function handleChange(event) {
+
+	// functions
+	function storeReturningUser(event) {
+		const { value } = event.target;
+		setReturningUser(value);
+		console.log(returningUser);
+	}
+
+	function handleNewUserInput(event) {
 		const { value, name } = event.target;
 		console.log(value, name, newUser);
-		setNewUser((prevUser)=>{
-return {...prevUser, [name]: value}
+		setNewUser((prevUser) => {
+			return { ...prevUser, [name]: value };
 		});
 		console.log(newUser);
 	}
@@ -28,26 +37,35 @@ return {...prevUser, [name]: value}
 	return (
 		<div className='homepage'>
 			<h1>NC NEWS</h1>
-			<p>{message} --a message from the context</p>
-			<p>The current user is: {user}</p>
+			<p>The current user is: {user.username}</p>
 			<h2>Hello and welcome to the ncnews app!</h2>
 			<Link to='/articles'>
 				<button>Continue as a guest</button>
 			</Link>
 			<h2>Returning member? Login:</h2>
-			<form>
+			<form
+				onSubmit={(event) => {
+					console.log('actually inside');
+					event.preventDefault();
+					login(returningUser);
+				}}>
 				<label htmlFor='newusername'>Username:</label>
 				<input
 					type='text'
 					name='username'
 					id='newusername'
-					onChange={handleChange}
 					minLength='6'
 					maxLength='20'
 					pattern='[A-Za-z0-9]+'
+					onChange={storeReturningUser}
 				/>
 				<input type='submit' value='Login' />
 			</form>
+			{/*
+
+
+
+				*/}
 			<h2>New Member? Create your login</h2>
 			<form
 				style={{ display: 'flex', flexDirection: 'column' }}
@@ -62,7 +80,7 @@ return {...prevUser, [name]: value}
 						type='text'
 						name='name'
 						id='newname'
-						onChange={handleChange}
+						onChange={handleNewUserInput}
 						pattern='[\w ]+'
 						minLength='6'
 						maxLength='20'
@@ -72,7 +90,7 @@ return {...prevUser, [name]: value}
 						type='text'
 						name='username'
 						id='newusername'
-						onChange={handleChange}
+						onChange={handleNewUserInput}
 						minLength='6'
 						maxLength='20'
 						pattern='[A-Za-z0-9]+'
