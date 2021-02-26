@@ -2,6 +2,7 @@ import React, { useContext,  useState } from 'react';
 import { Link } from '@reach/router';
 import UserContext from '../Context/UserContext';
 import {getUserByUsername} from '../api'
+import styled from "styled-components";
 //import {login} from '../Context/userFunctions'
 
 function Homepage() {
@@ -29,7 +30,6 @@ function Homepage() {
 			.then((user) => {
 			//	console.log(user);
 				setUser(user)
-		
 			})
 			.catch((err) => {
 				console.log(err);
@@ -49,13 +49,20 @@ function Homepage() {
 		console.log(newUser);
 	}
 	return (
-		<div className='homepage'>
-			<h1>NC NEWS</h1>
-			<p>The current user is: {user.username}</p>
-			<h2>Hello and welcome to the ncnews app!</h2>
-			<Link to='/articles'>
-				<button>Continue as a guest</button>
+		<StyledHomePage>
+		<StyledContainer>
+		
+			<StyledH1>NC NEWS</StyledH1>
+
+			</StyledContainer> 	<StyledContainer>
+			<Link style={{width: `100%`}} to='/articles'>
+		
+				<StyledButton>CONTINUE AS A GUEST</StyledButton>
 			</Link>
+			<StyledHR/>
+			<StyledButton>LOGIN</StyledButton>
+
+		
 			<h2>Returning member? Login:</h2>
 			<form
 				onSubmit={(event) => {
@@ -80,6 +87,7 @@ function Homepage() {
 
 
 				*/}
+					<StyledButton>CREATE ACCOUNT</StyledButton>
 			<h2>New Member? Create your login</h2>
 			<form
 				style={{ display: 'flex', flexDirection: 'column' }}
@@ -112,7 +120,44 @@ function Homepage() {
 					<input type='submit' value='create your account' />
 				</fieldset>
 			</form>
-		</div>
+			</StyledContainer>
+		</StyledHomePage>
 	);
 }
 export default Homepage;
+
+const StyledHomePage = styled.div`
+	background-color: #7FB069; /* Green */
+	display: flex;
+flex-flow: row nowrap;
+text-align: center;
+
+
+`
+const StyledContainer = styled.div`
+
+width: 50%;
+display: flex;
+flex-flow: column nowrap;
+
+justify-content: center;
+ align-items: center;
+`
+
+const StyledH1 = styled.h1`
+font-size: 15rem;
+
+`
+const StyledHR = styled.hr`
+data-content: 'hello';
+width: 50%;
+margin: 2rem;
+` 
+
+const StyledButton = styled.button`
+height: fit-content;
+width: 80%;
+font-size: 2em;
+border-radius: 20px;
+box-shadow: 5px 5px 8px blue;
+`
