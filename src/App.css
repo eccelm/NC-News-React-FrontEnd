@@ -1,16 +1,23 @@
-.App {
+/* body {
+  font-size: 1rem;
+  min-height: 100vh;
+  background-color: antiquewhite;
+} */
+
+/* .App {
   text-align: center;
   background-color: #cae9ff;
 }
 .Homepage {
   height: 90vh;
-}
+} */
 /*
   Not refactored yet, so if you like CSS, I recommend you don't read on unless you like horror stories
 
   https://jsfiddle.net/4Layrgjw/10/
   need to add in handleClick
 */
+/* 
 .radio-order-container {
   margin: 20px;
 }
@@ -131,4 +138,4 @@ li {
 .Header {
   background-color: #1b4965;
   height: 10%;
-}
+} */
