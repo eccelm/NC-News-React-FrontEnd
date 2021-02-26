@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 import UserContext from '../Context/UserContext';
 import { Link } from '@reach/router';
 import homeButton from '../Images/homebutton.png';
-import styled from "styled-components";
+import styled from 'styled-components';
 function Header() {
 	const { user, setUser } = useContext(UserContext);
 
 	return (
 		<StyledNav>
-      {/* <ul  className='header'> */}
-			<Link to='/' className="header__link">
+		<StyledContainer>
+			<Link to='/' className='header__link'>
 				{' '}
 				<img
 					src={homeButton}
@@ -18,10 +18,11 @@ function Header() {
 					width='50'
 					className='header__link'
 				/>{' '}
-			</Link>
-			<p>Logged in as: {user.username}</p>
+			</Link></StyledContainer>
+			<StyledContainer>
+			<StyledParagraph>Logged in as: {user.username}</StyledParagraph>
 			<StyledButton
-      className="header__logout-btn"
+				className='header__logout-btn'
 				onClick={() => {
 					setUser({
 						username: 'guest',
@@ -32,7 +33,7 @@ function Header() {
 				}}>
 				LOGOUT
 			</StyledButton>
-      {/* </ul> */}
+			</StyledContainer>
 		</StyledNav>
 	);
 }
@@ -44,18 +45,39 @@ STYLED COMPONENTS
 - two styled containers to keep article button and home together and same for login? 
 
 */
-const StyledNav = styled.nav`
+const StyledContainer = styled.div`
 display: flex;
-padding: 0.5rem;
-flex-flow: row wrap;
-justify-content: space-between;
-background-color: orange;
+flex-flow: row nowrap;
+`
+const StyledParagraph = styled.p`
+	color: white;
+	padding: 0.1rem 1rem;
 `;
 
+const StyledNav = styled.nav`
+	display: flex;
+	padding: 0.5rem;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	background-color: #ff550d;
+`;
 
 const StyledButton = styled.button`
-  background-color: black;
-  font-size: inherit;
-  color: white;
-  `;
+border-radius: 12px;  
+border: 2px solid #7FB069;
+box-shadow: 2px 5px #63934D;
+background-color: white;
+padding: 0.5rem;
+margin: 0.5rem;
+font-size: inherit;
+color: black;
 
+:hover {
+	background-color: #7FB069; /* Green */
+	color: white;
+
+:active {
+
+	box-shadow: 1px 1px #51783F;
+	transform: translateY(3px);
+  `;
