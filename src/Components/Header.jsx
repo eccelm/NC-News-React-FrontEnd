@@ -8,31 +8,32 @@ function Header() {
 
 	return (
 		<StyledNav>
-		<StyledContainer>
-			<Link to='/' className='header__link'>
-				{' '}
-				<img
-					src={homeButton}
-					alt='home button'
-					height='50'
-					width='50'
-					className='header__link'
-				/>{' '}
-			</Link></StyledContainer>
 			<StyledContainer>
-			<StyledParagraph>Logged in as: {user.username}</StyledParagraph>
-			<StyledButton
-				className='header__logout-btn'
-				onClick={() => {
-					setUser({
-						username: 'guest',
-						name: 'guest',
-						avatar: '',
-					});
-					console.log('reset to guest');
-				}}>
-				LOGOUT
-			</StyledButton>
+				<Link to='/' className='header__link'>
+					{' '}
+					<img
+						src={homeButton}
+						alt='home button'
+						height='50'
+						width='50'
+						className='header__link'
+					/>{' '}
+				</Link>
+			</StyledContainer>
+			<StyledContainer>
+				<StyledParagraph>Logged in as: {user.username}</StyledParagraph>
+				<StyledButton
+					className='header__logout-btn'
+					onClick={() => {
+						setUser({
+							username: 'guest',
+							name: 'guest',
+							avatar: '',
+						});
+						console.log('reset to guest');
+					}}>
+					LOGOUT
+				</StyledButton>
 			</StyledContainer>
 		</StyledNav>
 	);
@@ -46,9 +47,9 @@ STYLED COMPONENTS
 
 */
 const StyledContainer = styled.div`
-display: flex;
-flex-flow: row nowrap;
-`
+	display: flex;
+	flex-flow: row nowrap;
+`;
 const StyledParagraph = styled.p`
 	color: white;
 	padding: 0.1rem 1rem;
@@ -60,6 +61,11 @@ const StyledNav = styled.nav`
 	flex-flow: row wrap;
 	justify-content: space-between;
 	background-color: #ff550d;
+
+	@media (max-width: 750px) {
+		flex-direction: column;
+		justify-content: center;
+	}
 `;
 
 const StyledButton = styled.button`
