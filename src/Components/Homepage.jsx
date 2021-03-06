@@ -202,6 +202,7 @@ const StyledButton = styled.button`
 `;
 
 const StyledForm = styled.form`
+
 	background-color: thistle;
 	border: 1px solid gray;
 	border-top: none;

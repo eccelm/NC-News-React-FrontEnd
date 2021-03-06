@@ -40,7 +40,6 @@ function Articles() {
 	return (
 		<div>
 			<ArticlesFilter handleFilter={handleFilter} />
-			<h2>Click on a title to expand the article</h2>
 			<ArticlesList articles={articles} />
 		</div>
 	);
