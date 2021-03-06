@@ -14,25 +14,24 @@ function Articles() {
 	});
 
 	useEffect(() => {
-		getArticles(filters.topic, filters.sort_by, filters.order).then((articles) => {
-			setArticles(articles);
-			setLoading(false);
-			console.log('get articles loop check');
-	
-		});
+		getArticles(filters.topic, filters.sort_by, filters.order).then(
+			(articles) => {
+				setArticles(articles);
+				setLoading(false);
+				console.log('get articles loop check');
+			}
+		);
 	}, [filters]);
 	function handleFilter(event) {
 		const { name, value } = event.target;
 		console.log(name, value);
-		if(filters[name] !== value){
-		setFilters((prevFilters) => {
-			return { ...prevFilters, [name]: value };
-		
-		});
+		if (filters[name] !== value) {
+			setFilters((prevFilters) => {
+				return { ...prevFilters, [name]: value };
+			});
+		}
+		console.log(filters);
 	}
-    console.log(filters)
-	}
-
 
 	if (loading) {
 		return <Loader />;

@@ -69,9 +69,12 @@ function Homepage() {
 			</StyledContainer>
 
 			<StyledContainer>
-				
-					<StyledButton><Link style={{ width: `100%` }} to='/articles'>CONTINUE AS A GUEST		</Link> </StyledButton>
-		
+				<StyledButton>
+					<Link style={{ width: `100%` }} to='/articles'>
+						CONTINUE AS A GUEST{' '}
+					</Link>{' '}
+				</StyledButton>
+
 				<StyledHR />
 				<StyledButton
 					id='create-login-toggle'
@@ -106,7 +109,7 @@ function Homepage() {
 
 
 				*/}
-						<StyledHR />
+				<StyledHR />
 				<StyledButton
 					id='create-account-toggle'
 					onClick={(event) => {
@@ -202,17 +205,16 @@ const StyledButton = styled.button`
 `;
 
 const StyledForm = styled.form`
-
 	background-color: thistle;
 	border: 1px solid gray;
 	border-top: none;
-	opacity: ${props => (props.open ? "1" : "0")};
-	max-height: ${props => (props.open ? "100%" : "0")};
+	opacity: ${(props) => (props.open ? '1' : '0')};
+	max-height: ${(props) => (props.open ? '100%' : '0')};
 	overflow: hidden;
-	padding: ${props => (props.open ? "15px" : "0 15px")};
+	padding: ${(props) => (props.open ? '15px' : '0 15px')};
 	transition: all 0.3s;
- 
+
 	p {
-	  margin: 0;
+		margin: 0;
 	}
 `;
