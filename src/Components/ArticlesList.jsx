@@ -26,7 +26,9 @@ function ArticlesList(props) {
 }
 
 export default ArticlesList;
-const StyledUl = styled.ul``;
+const StyledUl = styled.ul`
+list-style: none;
+`;
 const StyledLi = styled.li`
 	border-radius: 6px;
 	border: 3px solid #7fb069;

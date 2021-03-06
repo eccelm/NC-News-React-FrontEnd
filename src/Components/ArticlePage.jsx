@@ -54,20 +54,20 @@ function ArticlePage(props) {
 		<div>
 			<Link
 				style={{ width: `100vw`, padding: `2rem`, textSize: `` }}
-				to='/articles'>			<p>Back To All Articles</p> </Link>
+				to='/articles'>
+				{' '}
+				<p>Back To All Articles</p>{' '}
+			</Link>
 
 			<StyledOuterContainer>
-
-		
-					<StyledInnerContainer className='main-article'>
-						<h1>{article.title}</h1>
-						<p>{article.author}</p>
-						<p>{article.body}</p>
-					</StyledInnerContainer>
-					<StyledInnerContainer className='add-comment'>
-						<CommentAdder handleNewComment={handleNewComment} />
-					</StyledInnerContainer>
-			
+				<StyledInnerContainer className='main-article'>
+					<h1>{article.title}</h1>
+					<p>{article.author}</p>
+					<p>{article.body}</p>
+				</StyledInnerContainer>
+				<StyledInnerContainer className='add-comment'>
+					<CommentAdder handleNewComment={handleNewComment} />
+				</StyledInnerContainer>
 
 				<StyledInnerContainer className='article-comments'>
 					<Comments comments={comments} removeComment={removeComment} />
@@ -89,15 +89,18 @@ const StyledOuterContainer = styled.div`
 const StyledInnerContainer = styled.div`
 	border: 2px solid;
 	margin: 1%;
-	min-height: fit-content;
 	text-align: center;
-	border-radius: 6px;
-	border: 3px solid #7fb069;
-	box-shadow: 6px 9px #51783f;
-	h1{
+	border-radius: 2px;
+	border: none;
+	box-shadow: 4px 7px #70334f;
+	padding: 2%;
+	h1 {
 		font-size: 2rem;
 	}
-	p{
+	h2 {
+		font-size: 2rem;
+	}
+	p {
 		font-size: 1.4rem;
 		margin: 2%;
 	}
