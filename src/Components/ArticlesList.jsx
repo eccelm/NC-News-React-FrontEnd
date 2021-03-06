@@ -6,14 +6,14 @@ import styled from 'styled-components';
 
 function ArticlesList(props) {
 	return (
-		<ul>
+		<StyledUl>
 			{props.articles.map((article) => {
 				return (
 					<StyledLi key={article.article_id}>
-            <StyledDate>Posted: {article.created_at.slice(0, 10)}</StyledDate>
-						<h3>{article.title} </h3>
-						<p> Author: {article.author}</p>
-						<Link to={`${article.article_id}`}>Go to article</Link>{' '}
+    
+						<StyledH2>{article.title} </StyledH2>
+		
+						<Link to={`${article.article_id}`}>Go to article...</Link>{' '}
 						{/*     
             <Collapsible trigger={<button> More Details</button>}>
               <div className="article-list-item-container">
@@ -28,6 +28,10 @@ function ArticlesList(props) {
               </div>
             </Collapsible> */}
             				{/* <Voter article={article} /> */}
+                    <StyledContainer>
+							<p>{article.created_at.slice(0, 10)}</p>
+							<p>{article.author}</p>
+						</StyledContainer>
 						<StyledContainer>
 							<p>{article.comment_count} Comments</p>
 							<p>{article.votes} Votes</p>
@@ -35,22 +39,23 @@ function ArticlesList(props) {
 					</StyledLi>
 				);
 			})}
-		</ul>
+		</StyledUl>
 	);
 }
 
 export default ArticlesList;
-
+const StyledUl = styled.ul`
+`
 const StyledLi = styled.li`
-	border-radius: 2px;
-	border: 4px solid orange;
-  margin: auto;
+	border-radius: 6px;
+  border: 3px solid #7FB069;
+  box-shadow: 6px 9px #51783F;
+  margin: 1.5% auto;
 	justify-content: center;
 	text-align: center;
-  max-width: 850px;
-	h3 {
-		color: purple;
-	}
+  max-width: 950px;
+  font-size: 1.5rem;
+
 `;
 
 const StyledContainer = styled.div`
@@ -59,10 +64,19 @@ const StyledContainer = styled.div`
 	justify-content: space-around;
 
 	p {
-		color: green;
+    font-size: 1.2rem;
 	}
 `;
-
+const StyledH2 =styled.h2`
+text-transform: capitalize;
+`
 const StyledDate = styled.p`
 text-align: left;
 `
+/*
+Alternate CSS
+
+  border: 10px solid;
+  border-image: radial-gradient( orange, yellow, orange) 1;
+
+*/

@@ -36,10 +36,10 @@ function ArticlesFilter(props) {
 			</StyledSelect>
 			</StyledFilterGroup>		<StyledFilterGroup>
 			<StyledButton name='order' id='order' value='asc' onClick={props.handleFilter}>
-				Ascending
+				ASC
 			</StyledButton>
 			<StyledButton id='order' name='order' value='desc' onClick={props.handleFilter}>
-				Descending
+				DESC
 			</StyledButton>
 			</StyledFilterGroup>	
 			</StyledFilterContainer>
@@ -83,7 +83,7 @@ border-radius: 12px;
 border: 2px solid #7FB069;
 box-shadow: 2px 5px #63934D;
 background-color: white;
-padding: 0.5rem;
+padding:  0.5rem 2.5rem;
 margin: 0.5rem;
 font-size: inherit;
 color: black;
