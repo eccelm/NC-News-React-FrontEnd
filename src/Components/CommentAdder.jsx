@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import styled from 'styled-components';
 import UserContext from '../Context/UserContext';
 /*
 Will need refactor to not have a hard-coded user 
@@ -24,7 +25,7 @@ function CommentAdder(props) {
 	}
 
 	return (
-		<div>
+		<StyledDiv>
 			<p>Hello {user.username}</p>
 			{user.username !== 'guest'?  
 						<form onSubmit={handleSubmit}>
@@ -45,8 +46,14 @@ function CommentAdder(props) {
 			: 
 			<p>Please Login to leave a comment</p>}
 
-		</div>
+		</StyledDiv>
 	);
 }
 
 export default CommentAdder;
+
+const StyledDiv = styled.div`
+display: flex;
+flex-flow: column wrap;
+min-height: fit-content;
+`
