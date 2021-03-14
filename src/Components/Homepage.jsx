@@ -34,10 +34,11 @@ function Homepage(props) {
 			.then((user) => {
 				//	console.log(user);
 				setUser(user);
-				navigate("/articles")
+				navigate('/articles');
 			})
 			.catch((err) => {
 				console.log(err);
+				alert('This username does not exist');
 			});
 	}
 	function handleVisiblity(event) {
@@ -64,7 +65,7 @@ function Homepage(props) {
 	function handleNewUser(event) {
 		event.preventDefault();
 		console.log(newUser);
-		createNewUser(newUser)
+		createNewUser(newUser);
 	}
 	return (
 		<StyledHomePage>
@@ -98,19 +99,18 @@ function Homepage(props) {
 						event.preventDefault();
 						login(returningUser);
 					}}>
-		
-						<p>You can log in as user 'tickle122'</p>
-						<label htmlFor='newusername'>Username:</label>
-						<input
-							type='text'
-							name='username'
-							id='newusername'
-							minLength='6'
-							maxLength='20'
-							pattern='[A-Za-z0-9]+'
-							onChange={storeReturningUser}
-						/>
-			
+					<p>You can log in as user 'tickle122'</p>
+					<label htmlFor='newusername'>Username:</label>
+					<input
+						type='text'
+						name='username'
+						id='newusername'
+						minLength='6'
+						maxLength='20'
+						pattern='[A-Za-z0-9]+'
+						onChange={storeReturningUser}
+					/>
+
 					<button type='submit' value='Login'>
 						Login
 					</button>
@@ -164,8 +164,13 @@ function Homepage(props) {
 								pattern='[A-Za-z0-9]+'
 							/>
 						</div>
-						<button type='submit' value='create your account' onClick={(event)=>{ event.preventDefault() 
-						alert(`this feature is not currently available`)}}>
+						<button
+							type='submit'
+							value='create your account'
+							onClick={(event) => {
+								event.preventDefault();
+								alert(`this feature is not currently available`);
+							}}>
 							Create Account
 						</button>
 					</fieldset>
