@@ -8,7 +8,7 @@ import styled from 'styled-components';
 function Homepage() {
 	// context
 	const { setUser } = useContext(UserContext);
-	// state for context
+	// state for user context
 	const [returningUser, setReturningUser] = useState('');
 	const [newUser, setNewUser] = useState({
 		name: '',
@@ -64,16 +64,16 @@ function Homepage() {
 	}
 	return (
 		<StyledHomePage>
-			<StyledContainer>
-				<StyledH1>NC NEWS</StyledH1>
-			</StyledContainer>
+			<GreenStyledContainer>
+				<StyledH1>NC NEWS.</StyledH1>
+			</GreenStyledContainer>
 
 			<StyledContainer>
-				<StyledButton>
-					<Link style={{ width: `100%` }} to='/articles'>
+				<YellowStyledButton>
+					<Link style={{ width: `100%`, color:`black`, textDecoration: `none`}} to='/articles'>
 						CONTINUE AS A GUEST{' '}
 					</Link>{' '}
-				</StyledButton>
+				</YellowStyledButton>
 
 				<StyledHR />
 				<StyledButton
@@ -110,13 +110,13 @@ function Homepage() {
 
 				*/}
 				<StyledHR />
-				<StyledButton
+				<OrangeStyledButton
 					id='create-account-toggle'
 					onClick={(event) => {
 						handleVisiblity(event);
 					}}>
 					CREATE ACCOUNT
-				</StyledButton>
+				</OrangeStyledButton>
 				{/* <h2>New Member? Create your login</h2> */}
 				<StyledForm
 					open={newAccountToggle}
@@ -157,7 +157,7 @@ function Homepage() {
 export default Homepage;
 
 const StyledHomePage = styled.div`
-	background-color: #7fb069; /* Green */
+	/*background-color: #7fb069; /* Green */
 	display: flex;
 	flex-flow: row nowrap;
 	text-align: center;
@@ -177,6 +177,9 @@ const StyledContainer = styled.div`
 	padding-bottom: 20px;
 `;
 
+const GreenStyledContainer = styled(StyledContainer)`
+/*background-color: #7fb069;*/
+`
 const StyledH1 = styled.h1`
 	font-size: 15vw;
 	@media (max-width: 800px) {
@@ -185,24 +188,30 @@ const StyledH1 = styled.h1`
 	}
 `;
 const StyledHR = styled.hr`
-	data-content: 'hello';
 	width: 30%;
 	margin: 2rem;
 `;
 
 const StyledButton = styled.button`
-	height: fit-content;
+	height: 3rem;
 	width: 60%;
 	min-width: fit-content;
 	font-size: 2em;
 	border-radius: 20px;
-	box-shadow: 5px 5px 8px blue;
+	border: orange 1px;
+	box-shadow: 5px 5px 8px #425494;
 
 	@media (max-width: 800px) {
 		width: 90vw;
 		font-size: 1.5rem;
 	}
 `;
+const YellowStyledButton = styled(StyledButton)`
+box-shadow: 5px 5px 8px #F0CC11;
+`
+const OrangeStyledButton = styled(StyledButton)`
+box-shadow: 5px 5px 8px #FB951D;
+`
 
 const StyledForm = styled.form`
 	background-color: thistle;
