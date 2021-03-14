@@ -9,7 +9,7 @@ import UserState from './Context/UserState'
 function App() {
   return (
     <div className="App">
-      <UserState value={"Hello"}>
+      <UserState>
       <Header />
       <Router>
         <Homepage path="/" />
