@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import UserContext from '../Context/UserContext';
 import { Link } from '@reach/router';
-import homeButton from '../Images/homebutton.png';
+import homeButton from '../Images/outline.webp';
+import articlesButton from '../Images/newspaper.webp'
 import styled from 'styled-components';
 function Header() {
 	const { user, setUser } = useContext(UserContext);
@@ -14,6 +15,16 @@ function Header() {
 					<img
 						src={homeButton}
 						alt='home button'
+						height='50'
+						width='50'
+						className='header__link'
+					/>{' '}
+				</Link>
+				<Link to='/articles' className='header__link'>
+					{' '}
+					<img
+						src={articlesButton}
+						alt='articles button'
 						height='50'
 						width='50'
 						className='header__link'
