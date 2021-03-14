@@ -47,7 +47,12 @@ function Header() {
 						LOGOUT
 					</StyledButton>
 				) : (
-					<StyledButton>LOGIN</StyledButton>
+				
+<Link to='/' className='header__link'>
+<StyledButton>	LOGIN</StyledButton>
+				</Link>
+
+					
 				)}
 			</StyledContainer>
 		</StyledNav>
@@ -77,9 +82,10 @@ const StyledNav = styled.nav`
 	justify-content: space-between;
 	background-color: #ff550d;
 
-	@media (max-width: 750px) {
+	@media (max-width: 500px) {
 		flex-direction: column;
 		justify-content: center;
+		align-items: center;
 	}
 `;
 
