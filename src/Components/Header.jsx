@@ -22,20 +22,22 @@ function Header() {
 			</StyledContainer>
 			<StyledContainer>
 				<StyledParagraph>Logged in as: {user.username}</StyledParagraph>
-				{user.username !== "guest" ?			<StyledButton
-					className='header__logout-btn'
-					onClick={() => {
-						setUser({
-							username: 'guest',
-							name: 'guest',
-							avatar: '',
-						});
-						console.log('reset to guest');
-					}}>
-					LOGOUT
-				</StyledButton> : 
-				<StyledButton>Login</StyledButton>}
-	
+				{user.username !== 'guest' ? (
+					<StyledButton
+						className='header__logout-btn'
+						onClick={() => {
+							setUser({
+								username: 'guest',
+								name: 'guest',
+								avatar: '',
+							});
+							console.log('reset to guest');
+						}}>
+						LOGOUT
+					</StyledButton>
+				) : (
+					<StyledButton>LOGIN</StyledButton>
+				)}
 			</StyledContainer>
 		</StyledNav>
 	);

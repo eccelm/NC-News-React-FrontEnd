@@ -19,7 +19,7 @@ function Homepage() {
 	// page display toggles
 	const [loginToggle, setLoginToggle] = useState(false);
 	const [newAccountToggle, setNewAccountToggle] = useState(false);
-
+	const [awaitingRes, setAwaitingRes] = useState(false);
 	// functions
 	function storeReturningUser(event) {
 		const { value } = event.target;
@@ -95,17 +95,17 @@ function Homepage() {
 						event.preventDefault();
 						login(returningUser);
 					}}>
-									<div className="form-group">
-					<label htmlFor='newusername'>Username:</label>
-					<input
-						type='text'
-						name='username'
-						id='newusername'
-						minLength='6'
-						maxLength='20'
-						pattern='[A-Za-z0-9]+'
-						onChange={storeReturningUser}
-					/>
+					<div className='form-group'>
+						<label htmlFor='newusername'>Username:</label>
+						<input
+							type='text'
+							name='username'
+							id='newusername'
+							minLength='6'
+							maxLength='20'
+							pattern='[A-Za-z0-9]+'
+							onChange={storeReturningUser}
+						/>
 					</div>
 					<button type='submit' value='Login'>
 						Login
@@ -131,10 +131,10 @@ function Homepage() {
 					onSubmit={handleNewUser}>
 					<fieldset>
 						<legend>Create your new user login here.</legend>
-					<ul>
-						<li>Minimum 5 characters</li>
-						<li>Only characters a-z A-Z 0-9 can be used</li>
-</ul>
+						<ul>
+							<li>Minimum 5 characters</li>
+							<li>Only characters a-z A-Z 0-9 can be used</li>
+						</ul>
 						<div className='form-group'>
 							<label htmlFor='newname'>Name:</label>
 							<input
@@ -194,7 +194,6 @@ const StyledContainer = styled.div`
 const GreenStyledContainer = styled(StyledContainer)`
 	/*background-color: #7fb069;*/
 	font-family: 'Cutive Mono', monospace;
-
 `;
 const StyledH1 = styled.h1`
 	font-size: 15vw;
@@ -246,48 +245,47 @@ const StyledForm = styled.form`
 	justify-content: center;
 	align-items: center;
 
-.form-group{
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	padding: 5px;
-}
-label {
-	min-width: 25%;
-	padding-right: 5px;
-}
-input {
-  background: #fff;
-  border-radius: 20px;
-  border: none;
-  box-shadow: inset 0px 1px 8px rgba(0, 0, 0, 0.2);
-  line-height: 1.45;
-  outline: none;
-  padding: 0.75rem;
+	.form-group {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		padding: 5px;
+	}
+	label {
+		min-width: 25%;
+		padding-right: 5px;
+	}
+	input {
+		background: #fff;
+		border-radius: 20px;
+		border: none;
+		box-shadow: inset 0px 1px 8px rgba(0, 0, 0, 0.2);
+		line-height: 1.45;
+		outline: none;
+		padding: 0.75rem;
+	}
 
-}
+	input:hover {
+		border: 1px solid grey;
+	}
 
-input:hover {
-	border: 1px solid grey;
-}
-
-input:focus {
-  color: #4b515d;
-  border: 1px solid #B8B6B6;
-  box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.01), 0px 0px 8px rgba(0, 0, 0, 0.2);
-}
+	input:focus {
+		color: #4b515d;
+		border: 1px solid #b8b6b6;
+		box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.01),
+			0px 0px 8px rgba(0, 0, 0, 0.2);
+	}
 	button {
 		margin: 1rem;
 		padding: 0.75rem;
 		border-radius: 10px;
 		border: 0;
-		background:#fb951d;
+		background: #fb951d;
 		font-size: 1.2em;
 		color: #fff;
 		text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
-	
 	}
-button:hover {
-	background-color: #ff550d;
-}
+	button:hover {
+		background-color: #ff550d;
+	}
 `;
