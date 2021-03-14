@@ -44,6 +44,19 @@ export const getUserByUsername = (username) => {
 		return user;
 	});
 };
+/*
+NOT WORKING 
+getting 405 method not allowed from back-end? Last version seems to have post before all 405. Remove 405, check working, then reinstate 405 
+
+*/
+export const createNewUser = (user) => {
+	console.log(user)
+return ncNewsApi
+	.post('/users', user)
+.then((res)=>{
+console.log(res)
+})
+}
 
 export const postCommentToArticle = (articleId, commentContent) => {
 	return ncNewsApi

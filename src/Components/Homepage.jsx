@@ -1,25 +1,26 @@
 import React, { useContext, useState } from 'react';
-import { Link } from '@reach/router';
+import { Link, navigate } from '@reach/router';
 import UserContext from '../Context/UserContext';
-import { getUserByUsername } from '../api';
+import { getUserByUsername, createNewUser } from '../api';
 import styled from 'styled-components';
 //import {login} from '../Context/userFunctions'
 
-function Homepage() {
+function Homepage(props) {
 	// context
+
 	const { setUser } = useContext(UserContext);
 	// state for user context
 	const [returningUser, setReturningUser] = useState('');
 	const [newUser, setNewUser] = useState({
 		name: '',
 		username: '',
-		avatar:
+		avatar_url:
 			'https://cdn.pixabay.com/photo/2017/01/31/17/48/animal-2025913_960_720.png',
 	});
 	// page display toggles
 	const [loginToggle, setLoginToggle] = useState(false);
 	const [newAccountToggle, setNewAccountToggle] = useState(false);
-	const [awaitingRes, setAwaitingRes] = useState(false);
+	//const [awaitingRes, setAwaitingRes] = useState(false);
 	// functions
 	function storeReturningUser(event) {
 		const { value } = event.target;
@@ -33,6 +34,7 @@ function Homepage() {
 			.then((user) => {
 				//	console.log(user);
 				setUser(user);
+				navigate("/articles")
 			})
 			.catch((err) => {
 				console.log(err);
@@ -62,6 +64,7 @@ function Homepage() {
 	function handleNewUser(event) {
 		event.preventDefault();
 		console.log(newUser);
+		createNewUser(newUser)
 	}
 	return (
 		<StyledHomePage>
@@ -95,7 +98,8 @@ function Homepage() {
 						event.preventDefault();
 						login(returningUser);
 					}}>
-					<div className='form-group'>
+		
+						<p>You can log in as user 'tickle122'</p>
 						<label htmlFor='newusername'>Username:</label>
 						<input
 							type='text'
@@ -106,7 +110,7 @@ function Homepage() {
 							pattern='[A-Za-z0-9]+'
 							onChange={storeReturningUser}
 						/>
-					</div>
+			
 					<button type='submit' value='Login'>
 						Login
 					</button>
@@ -132,6 +136,7 @@ function Homepage() {
 					<fieldset>
 						<legend>Create your new user login here.</legend>
 						<ul>
+							<li>FEATURE NOT CURRENTLY AVAILABLE</li>
 							<li>Minimum 5 characters</li>
 							<li>Only characters a-z A-Z 0-9 can be used</li>
 						</ul>
@@ -159,7 +164,8 @@ function Homepage() {
 								pattern='[A-Za-z0-9]+'
 							/>
 						</div>
-						<button type='submit' value='create your account'>
+						<button type='submit' value='create your account' onClick={(event)=>{ event.preventDefault() 
+						alert(`this feature is not currently available`)}}>
 							Create Account
 						</button>
 					</fieldset>
