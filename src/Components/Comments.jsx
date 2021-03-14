@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import UserContext from '../Context/UserContext';
 import styled from 'styled-components';
- import Voter from "./Voter";
+import Voter from './Voter';
 
 function Comments(props) {
 	const { user } = useContext(UserContext);
@@ -18,25 +18,22 @@ function Comments(props) {
 				{props.comments.map((comment) => {
 					return (
 						<StyledLi key={comment.comment_id}>
-									<StyledInnerContainer>
-							<Voter comment={comment}></Voter>
-							{comment.author === user.username ? (
-						
-					
-								<StyledButton
-									value={comment.comment_id}
-									onClick={handleClick}
-									className='delete-comment-button'>
-									delete
-								</StyledButton>
-						
-							) : null}
-		</StyledInnerContainer>
+							<StyledInnerContainer>
+								<Voter comment={comment}></Voter>
+								{comment.author === user.username ? (
+									<StyledButton
+										value={comment.comment_id}
+										onClick={handleClick}
+										className='delete-comment-button'>
+										delete
+									</StyledButton>
+								) : null}
+							</StyledInnerContainer>
 
 							<p>{comment.author}</p>
 							{/* <Voter comment={comment} /> */}
 							<p>Written: {comment.created_at.slice(0, 10)}</p>
-						
+
 							<p className='body'>{comment.body}</p>
 
 							<hr />
@@ -49,13 +46,11 @@ function Comments(props) {
 }
 
 export default Comments;
-const StyledContainer = styled.div`
-
-`;
+const StyledContainer = styled.div``;
 const StyledInnerContainer = styled.div`
-display: flex;
-flex-flow: row wrap;
-justify-content: space-between;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
 `;
 const StyledUl = styled.ul`
 	margin: auto;

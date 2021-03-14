@@ -67,7 +67,7 @@ class Voter extends Component {
 						onClick={this.handleClick}
 						value={1}
 						disabled={hasVoted}>
-						upvote
+						upvote ❤️‍🔥
 					</StyledButton>
 					<p>Votes: </p>
 					<p>
@@ -86,6 +86,7 @@ export default Voter;
 const StyledContainer = styled.div`
 	display: flex;
 	align-items: baseline;
+  justify-content: center;
 `;
 
 const StyledButton = styled.button`

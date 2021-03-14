@@ -10,6 +10,7 @@ import { Link } from '@reach/router';
 import Loader from './Loading';
 import Comments from './Comments';
 import CommentAdder from './CommentAdder';
+import Voter from "./Voter";
 /*
 Promise.All ??
 split into seperate useEffects
@@ -61,9 +62,13 @@ function ArticlePage(props) {
 
 			<StyledOuterContainer>
 				<StyledInnerContainer className='main-article'>
+		
+
 					<h1>{article.title}</h1>
 					<p>{article.author}</p>
+					<Voter article={article}></Voter>
 					<p>{article.body}</p>
+		
 				</StyledInnerContainer>
 				<StyledInnerContainer className='add-comment'>
 					<CommentAdder handleNewComment={handleNewComment} />
@@ -93,6 +98,7 @@ const StyledInnerContainer = styled.div`
 	border-radius: 2px;
 	border: none;
 	box-shadow: 4px 7px #70334f;
+
 	padding: 2%;
 	h1 {
 		font-size: 2rem;
