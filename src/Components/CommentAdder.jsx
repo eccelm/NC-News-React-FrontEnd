@@ -1,9 +1,7 @@
 import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import UserContext from '../Context/UserContext';
-/*
-Will need refactor to not have a hard-coded user 
-*/
+
 function CommentAdder(props) {
 	const {  user } = useContext(UserContext);
 	const [body, setBody] = useState('');
@@ -28,7 +26,7 @@ function CommentAdder(props) {
 		<StyledDiv>
 			<p>Hello {user.username}</p>
 			{user.username !== 'guest'?  
-						<form onSubmit={handleSubmit}>
+						<StyledForm onSubmit={handleSubmit}>
 						<label htmlFor='comment-body'>
 							Add your comment here:
 							<textarea
@@ -40,9 +38,9 @@ function CommentAdder(props) {
 								onChange={(event) => {
 									handleInput('body', event.target.value);
 								}}></textarea>
-							<button type='submit'>Submit Comment</button>
+							<StyledButton type='submit'>Submit Comment</StyledButton>
 						</label>
-					</form>
+					</StyledForm>
 			: 
 			<p>Please Login to leave a comment</p>}
 
@@ -56,4 +54,32 @@ const StyledDiv = styled.div`
 display: flex;
 flex-flow: column wrap;
 min-height: fit-content;
+
 `
+
+const StyledForm = styled.form`
+textarea {
+	width: 100%;
+}
+
+`
+
+const StyledButton = styled.button`
+border-radius: 12px;  
+border: 2px solid #7FB069;
+box-shadow: 2px 5px #63934D;
+background-color: white;
+padding: 0.5rem;
+margin: 0.5rem;
+font-size: inherit;
+color: black;
+
+:hover {
+	background-color: #7FB069; /* Green */
+	color: white;
+
+:active {
+
+	box-shadow: 1px 1px #51783F;
+	transform: translateY(3px);
+  `;

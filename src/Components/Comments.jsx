@@ -18,20 +18,20 @@ function Comments(props) {
 				{props.comments.map((comment) => {
 					return (
 						<StyledLi key={comment.comment_id}>
-							<p> User: {comment.author}</p>
-							{/* <Voter comment={comment} /> */}
-							<p>Written: {comment.created_at.slice(0, 10)}</p>
 							{comment.author === user.username ? (
-								<button
+								<StyledButton
 									value={comment.comment_id}
 									onClick={handleClick}
 									className='delete-comment-button'>
 									delete X
-								</button>
+								</StyledButton>
 							) : null}
 
-							<hr />
-							<p>{comment.body}</p>
+							<p> User: {comment.author}</p>
+							{/* <Voter comment={comment} /> */}
+							<p>Written: {comment.created_at.slice(0, 10)}</p>
+
+							<p className='body'>{comment.body}</p>
 
 							<hr />
 						</StyledLi>
@@ -57,4 +57,29 @@ const StyledLi = styled.li`
 	color: black;
 	background-color: #ffffff;
 	list-style: none;
+
+	.body {
+		border-top: 2px solid lightgrey;
+		border-bottom: 2px solid lightgrey;
+	}
 `;
+
+const StyledButton = styled.button`
+border-radius: 12px;  
+border: 2px solid #fb951d;
+box-shadow: 2px 5px  #ff550d;
+background-color: white;
+padding: 0.5rem;
+margin: 0.5rem;
+font-size: inherit;
+color: black;
+
+:hover {
+	background-color: #fb951d; /* Green */
+	color: white;
+
+:active {
+
+	box-shadow: 1px 1px  #ff550d;
+	transform: translateY(3px);
+  `;
