@@ -7,7 +7,7 @@ import {
 	deleteArticleComment,
 } from '../api';
 import { Link } from '@reach/router';
-import Loader from './Loading';
+import Loading from './Loading';
 import Comments from './Comments';
 import CommentAdder from './CommentAdder';
 import Voter from "./Voter";
@@ -49,7 +49,7 @@ function ArticlePage(props) {
 	}
 
 	if (loading) {
-		return <Loader />;
+		return <Loading />;
 	}
 	return (
 		<div>

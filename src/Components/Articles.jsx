@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getArticles } from '../api';
 import ArticlesFilter from './ArticlesFilter';
 import ArticlesList from './ArticlesList';
-import Loader from './Loading';
+import Loading from './Loading';
 
 function Articles() {
 	const [articles, setArticles] = useState([]);
@@ -34,7 +34,7 @@ function Articles() {
 	}
 
 	if (loading) {
-		return <Loader />;
+		return <Loading />;
 	}
 	return (
 		<div>
