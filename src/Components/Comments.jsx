@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import UserContext from '../Context/UserContext';
 import styled from 'styled-components';
-// import Voter from "./Voter";
+ import Voter from "./Voter";
 
 function Comments(props) {
 	const { user } = useContext(UserContext);
@@ -18,19 +18,25 @@ function Comments(props) {
 				{props.comments.map((comment) => {
 					return (
 						<StyledLi key={comment.comment_id}>
+									<StyledInnerContainer>
+							<Voter comment={comment}></Voter>
 							{comment.author === user.username ? (
+						
+					
 								<StyledButton
 									value={comment.comment_id}
 									onClick={handleClick}
 									className='delete-comment-button'>
-									delete X
+									delete
 								</StyledButton>
+						
 							) : null}
+		</StyledInnerContainer>
 
-							<p> User: {comment.author}</p>
+							<p>{comment.author}</p>
 							{/* <Voter comment={comment} /> */}
 							<p>Written: {comment.created_at.slice(0, 10)}</p>
-
+						
 							<p className='body'>{comment.body}</p>
 
 							<hr />
@@ -43,7 +49,14 @@ function Comments(props) {
 }
 
 export default Comments;
-const StyledContainer = styled.div``;
+const StyledContainer = styled.div`
+
+`;
+const StyledInnerContainer = styled.div`
+display: flex;
+flex-flow: row wrap;
+justify-content: space-between;
+`;
 const StyledUl = styled.ul`
 	margin: auto;
 	padding: 10px 0px;
@@ -65,6 +78,8 @@ const StyledLi = styled.li`
 `;
 
 const StyledButton = styled.button`
+width: fit-content;
+height: fit-content;
 border-radius: 12px;  
 border: 2px solid #fb951d;
 box-shadow: 2px 5px  #ff550d;
@@ -73,13 +88,13 @@ padding: 0.5rem;
 margin: 0.5rem;
 font-size: inherit;
 color: black;
+font-size: 1.5rem;
 
 :hover {
 	background-color: #fb951d; /* Green */
 	color: white;
 
 :active {
-
 	box-shadow: 1px 1px  #ff550d;
 	transform: translateY(3px);
   `;

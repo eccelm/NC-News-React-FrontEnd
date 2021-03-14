@@ -75,7 +75,7 @@ export const deleteArticleComment = (comment_id) => {
 export const upVote = (article_id, comment_id, vote) => {
 	if (comment_id) {
 		return ncNewsApi
-			.patch(`comments/${comment_id}`, { inc_votes: vote })
+			.patch(`comments/${comment_id}`, { inc_votes: 1})
 			.then((response) => {
 				console.log(response, 'Hello from the patched comment  vote');
 				return response.data.comment.votes;
