@@ -22,7 +22,7 @@ function Header() {
 			</StyledContainer>
 			<StyledContainer>
 				<StyledParagraph>Logged in as: {user.username}</StyledParagraph>
-				<StyledButton
+				{user.username !== "guest" ?			<StyledButton
 					className='header__logout-btn'
 					onClick={() => {
 						setUser({
@@ -33,7 +33,9 @@ function Header() {
 						console.log('reset to guest');
 					}}>
 					LOGOUT
-				</StyledButton>
+				</StyledButton> : 
+				<StyledButton>Login</StyledButton>}
+	
 			</StyledContainer>
 		</StyledNav>
 	);
