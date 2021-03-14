@@ -10,7 +10,7 @@ import { Link } from '@reach/router';
 import Loading from './Loading';
 import Comments from './Comments';
 import CommentAdder from './CommentAdder';
-import Voter from "./Voter";
+import Voter from './Voter';
 /*
 Promise.All ??
 split into seperate useEffects
@@ -25,12 +25,20 @@ function ArticlePage(props) {
 	useEffect(() => {
 		async function fetchArticle() {
 			let article = await getArticleById(props.article_id);
-			let comments = await getArticleComments(props.article_id);
 			setArticle(article);
-			setComments(comments);
-			setLoading(false);
+			//console.log('article recieved');
 		}
 		fetchArticle();
+	}, [props.article_id]);
+
+	useEffect(() => {
+		async function fetchArticleComments() {
+			let comments = await getArticleComments(props.article_id);
+			setComments(comments);
+			//console.log('article comments recieved');
+			setLoading(false);
+		}
+		fetchArticleComments();
 	}, [props.article_id]);
 
 	function handleNewComment(comment) {
@@ -62,13 +70,10 @@ function ArticlePage(props) {
 
 			<StyledOuterContainer>
 				<StyledInnerContainer className='main-article'>
-		
-
 					<h1>{article.title}</h1>
 					<p>{article.author}</p>
 					<Voter article={article}></Voter>
 					<p>{article.body}</p>
-		
 				</StyledInnerContainer>
 				<StyledInnerContainer className='add-comment'>
 					<CommentAdder handleNewComment={handleNewComment} />
