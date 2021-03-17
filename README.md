@@ -14,6 +14,10 @@ Since the end of the course I have returned to this project to refactor the code
 
 ## Running the application
 
+Currently the app is hosted at https://marthasncnews.netlify.app/
+
+Alternately,
+
 Clone the project to your local machine, once opened in the IDE, you can run
 
 ### `npm start`
